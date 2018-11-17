@@ -30,10 +30,10 @@ insert into Usuario(usuario, clave, tipo, estado, imagen)
 values ('elopez'   , 'e10adc3949ba59abbe56e057f20f883e','37','Madre Familia','A','');
 
 insert into Usuario(usuario, clave, tipo, estado, imagen)
-values ('elanchipa', 'e10adc3949ba59abbe56e057f20f883e','Madre Familia','A','');
+values ('elanchipa', 'e10adc3949ba59abbe56e057f20f883e','37','Madre Familia','A','');
 
 insert into Usuario(usuario, clave, tipo, estado, imagen)
-values ('jorge1'   , 'e10adc3949ba59abbe56e057f20f883e','Madre Familia','A','');
+values ('jorge1'   , 'e10adc3949ba59abbe56e057f20f883e','37','Madre Familia','A','');
 
 CREATE TABLE MetodoAprendizaje
 (
