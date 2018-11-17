@@ -2,38 +2,37 @@ CREATE TABLE Usuario (
   id      int identity primary key not null,
   usuario varchar(20)              not null,
   clave   varchar(100)             not null,
-  edad	  varchar(2)			   not null,
   tipo    varchar(30)              not null,
   estado  nvarchar(1)              not null,
-  imagen  varchar(100),
+  imagen  varchar(100)
 );
 
-insert into Usuario(usuario, clave, edad, tipo, estado, imagen)
-values ('garcaya'  , 'e10adc3949ba59abbe56e057f20f883e','30','Madre Cuidadora','A','');
+insert into Usuario(usuario, clave, tipo, estado, imagen)
+values ('garcaya'  , 'e10adc3949ba59abbe56e057f20f883e','Madre Cuidadora','A','');
 
-insert into Usuario(usuario, clave, edad, tipo, estado, imagen)
-values ('acondori'  , 'e10adc3949ba59abbe56e057f20f883e','32','Madre Cuidadora','A','');
+insert into Usuario(usuario, clave, tipo, estado, imagen)
+values ('acondori'  , 'e10adc3949ba59abbe56e057f20f883e','Madre Cuidadora','A','');
 
-insert into Usuario(usuario, clave, edad, tipo, estado, imagen)
-values ('ctapia'   , 'e10adc3949ba59abbe56e057f20f883e','33','Madre Guia','A','');
+insert into Usuario(usuario, clave, tipo, estado, imagen)
+values ('ctapia'   , 'e10adc3949ba59abbe56e057f20f883e','Madre Guia','A','');
 
-insert into Usuario(usuario, clave, edad, tipo, estado, imagen)
-values ('afaucheux', 'e10adc3949ba59abbe56e057f20f883e','34','Madre Jefa','A','');
+insert into Usuario(usuario, clave, tipo, estado, imagen)
+values ('afaucheux', 'e10adc3949ba59abbe56e057f20f883e','Madre Jefa','A','');
 
-insert into Usuario(usuario, clave, edad, tipo, estado, imagen)
-values ('svelarde' , 'e10adc3949ba59abbe56e057f20f883e','35','Madre Familia','A','');
+insert into Usuario(usuario, clave, tipo, estado, imagen)
+values ('svelarde' , 'e10adc3949ba59abbe56e057f20f883e','Madre Familia','A','');
 
-insert into Usuario(usuario, clave, edad, tipo, estado, imagen)
-values ('pedro1'   , 'e10adc3949ba59abbe56e057f20f883e','36','Madre Familia','A','');
+insert into Usuario(usuario, clave, tipo, estado, imagen)
+values ('pedro1'   , 'e10adc3949ba59abbe56e057f20f883e','Madre Familia','A','');
 
-insert into Usuario(usuario, clave, edad, tipo, estado, imagen)
-values ('elopez'   , 'e10adc3949ba59abbe56e057f20f883e','37','Madre Familia','A','');
+insert into Usuario(usuario, clave, tipo, estado, imagen)
+values ('elopez'   , 'e10adc3949ba59abbe56e057f20f883e','Madre Familia','A','');
 
-insert into Usuario(usuario, clave, edad, tipo, estado, imagen)
-values ('elanchipa', 'e10adc3949ba59abbe56e057f20f883e','38','Madre Familia','A','');
+insert into Usuario(usuario, clave, tipo, estado, imagen)
+values ('elanchipa', 'e10adc3949ba59abbe56e057f20f883e','Madre Familia','A','');
 
-insert into Usuario(usuario, clave, edad, tipo, estado, imagen)
-values ('jorge1'   , 'e10adc3949ba59abbe56e057f20f883e','40','Madre Familia','A','');
+insert into Usuario(usuario, clave, tipo, estado, imagen)
+values ('jorge1'   , 'e10adc3949ba59abbe56e057f20f883e','Madre Familia','A','');
 
 CREATE TABLE MetodoAprendizaje
 (
@@ -56,6 +55,7 @@ CREATE TABLE Madre
   id            int PRIMARY KEY NOT NULL IDENTITY,
   nombre        varchar(30)     NOT NULL,
   apellido      varchar(30)     NOT NULL,
+  edad			varchar(2)		NOT NULL,
   horas			int				NOT NULL,
   obserbaciones text			NOT NULL,
   comite        varchar(20)     null,
@@ -64,11 +64,13 @@ CREATE TABLE Madre
   foreign key (fk_id_usuario) references Usuario (id)
 );
 
-INSERT INTO Madre (nombre, apellido, horas, obserbaciones, comite, estado, fk_id_usuario) VALUES ('Graciela', 'Arcaya'   ,5,'Observación XXX','Comite XXX', 'A', 1);
-INSERT INTO Madre (nombre, apellido, horas, obserbaciones, comite, estado, fk_id_usuario) VALUES ('Ana'     , 'Condori'  ,6,'Observación XXX','Comite XXX', 'A', 2);
-INSERT INTO Madre (nombre, apellido, horas, obserbaciones, comite, estado, fk_id_usuario) VALUES ('Carolina', 'Tapia'    ,7,'Observación XXX','Comite XXX', 'A', 3);
-INSERT INTO Madre (nombre, apellido, horas, obserbaciones, comite, estado, fk_id_usuario) VALUES ('Andrea'  , 'Faucheux' ,8,'Observación XXX',''          , 'A', 4);
-INSERT INTO Madre (nombre, apellido, horas, obserbaciones, comite, estado, fk_id_usuario) VALUES ('Sonia'   , 'Velarde'  ,9,'Observación XXX','Comite XXX', 'A', 5);
+
+INSERT INTO Madre (nombre, apellido, edad, horas, obserbaciones, comite, estado, fk_id_usuario) VALUES ('Graciela', 'Arcaya'   ,'30',5,'Observación XXX','Comite XXX', 'A', 1);
+INSERT INTO Madre (nombre, apellido, edad, horas, obserbaciones, comite, estado, fk_id_usuario) VALUES ('Ana'     , 'Condori'  ,'35',6,'Observación XXX','Comite XXX', 'A', 2);
+INSERT INTO Madre (nombre, apellido, edad, horas, obserbaciones, comite, estado, fk_id_usuario) VALUES ('Carolina', 'Tapia'    ,'36',7,'Observación XXX','Comite XXX', 'A', 3);
+INSERT INTO Madre (nombre, apellido, edad, horas, obserbaciones, comite, estado, fk_id_usuario) VALUES ('Andrea'  , 'Faucheux' ,'37',8,'Observación XXX',''          , 'A', 4);
+INSERT INTO Madre (nombre, apellido, edad, horas, obserbaciones, comite, estado, fk_id_usuario) VALUES ('Sonia'   , 'Velarde'  ,'38',9,'Observación XXX','Comite XXX', 'A', 5);
+
 
 create table Ranking(
   id  int PRIMARY KEY NOT NULL IDENTITY,
