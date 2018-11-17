@@ -11,28 +11,28 @@ CREATE TABLE Usuario (
 insert into Usuario(usuario, clave, edad, tipo, estado, imagen)
 values ('garcaya'  , 'e10adc3949ba59abbe56e057f20f883e','30','Madre Cuidadora','A','');
 
-insert into Usuario(usuario, clave, tipo, estado, imagen)
+insert into Usuario(usuario, clave, edad, tipo, estado, imagen)
 values ('acondori'  , 'e10adc3949ba59abbe56e057f20f883e','32','Madre Cuidadora','A','');
 
-insert into Usuario(usuario, clave, tipo, estado, imagen)
+insert into Usuario(usuario, clave, edad, tipo, estado, imagen)
 values ('ctapia'   , 'e10adc3949ba59abbe56e057f20f883e','33','Madre Guia','A','');
 
-insert into Usuario(usuario, clave, tipo, estado, imagen)
+insert into Usuario(usuario, clave, edad, tipo, estado, imagen)
 values ('afaucheux', 'e10adc3949ba59abbe56e057f20f883e','34','Madre Jefa','A','');
 
-insert into Usuario(usuario, clave, tipo, estado, imagen)
+insert into Usuario(usuario, clave, edad, tipo, estado, imagen)
 values ('svelarde' , 'e10adc3949ba59abbe56e057f20f883e','35','Madre Familia','A','');
 
-insert into Usuario(usuario, clave, tipo, estado, imagen)
+insert into Usuario(usuario, clave, edad, tipo, estado, imagen)
 values ('pedro1'   , 'e10adc3949ba59abbe56e057f20f883e','36','Madre Familia','A','');
 
-insert into Usuario(usuario, clave, tipo, estado, imagen)
+insert into Usuario(usuario, clave, edad, tipo, estado, imagen)
 values ('elopez'   , 'e10adc3949ba59abbe56e057f20f883e','37','Madre Familia','A','');
 
-insert into Usuario(usuario, clave, tipo, estado, imagen)
+insert into Usuario(usuario, clave, edad, tipo, estado, imagen)
 values ('elanchipa', 'e10adc3949ba59abbe56e057f20f883e','38','Madre Familia','A','');
 
-insert into Usuario(usuario, clave, tipo, estado, imagen)
+insert into Usuario(usuario, clave, edad, tipo, estado, imagen)
 values ('jorge1'   , 'e10adc3949ba59abbe56e057f20f883e','40','Madre Familia','A','');
 
 CREATE TABLE MetodoAprendizaje
@@ -44,6 +44,7 @@ CREATE TABLE MetodoAprendizaje
     procedimiento text NOT NULL,
     estado nvarchar(1) not null
 );
+
 INSERT INTO MetodoAprendizaje (nombre, descripcion, rango_edad, procedimiento, estado) VALUES ('Metodo Aprendizaje1', 'Descripcion XXX', '6-9 meses', 'Procedimineto XXX', 'A');
 INSERT INTO MetodoAprendizaje (nombre, descripcion, rango_edad, procedimiento, estado) VALUES ('Metodo Aprendizaje2', 'Descripcion XXX', '10-12 meses', 'Procedimineto XXX', 'A');
 INSERT INTO MetodoAprendizaje (nombre, descripcion, rango_edad, procedimiento, estado) VALUES ('Metodo Aprendizaje3', 'Descripcion XXX', '13-18 meses', 'Procedimineto XXX', 'A');
@@ -53,20 +54,21 @@ INSERT INTO MetodoAprendizaje (nombre, descripcion, rango_edad, procedimiento, e
 CREATE TABLE Madre
 (
   id            int PRIMARY KEY NOT NULL IDENTITY,
-  nombre        varchar(30)     not null,
-  apellido      varchar(30)     not null,
-  horas int not null,
-  obserbaciones text not null, --(mumero de insidentes)
-  comite        varchar(20),
-  estado        nvarchar(1)     not null,
-  fk_id_usuario int             not null,
+  nombre        varchar(30)     NOT NULL,
+  apellido      varchar(30)     NOT NULL,
+  horas			int				NOT NULL,
+  obserbaciones text			NOT NULL,
+  comite        varchar(20)     null,
+  estado        nvarchar(1)     NOT NULL,
+  fk_id_usuario int             NOT NULL,
   foreign key (fk_id_usuario) references Usuario (id)
 );
-INSERT INTO Madre (nombre, apellido, comite, estado, fk_id_usuario) VALUES ('Graciela', 'Arcaya'   ,'Comite XXX', 'A', 1);
-INSERT INTO Madre (nombre, apellido, comite, estado, fk_id_usuario) VALUES ('Ana'     , 'Condori'  ,'Comite XXX', 'A', 2);
-INSERT INTO Madre (nombre, apellido, comite, estado, fk_id_usuario) VALUES ('Carolina', 'Tapia'    ,'Comite XXX', 'A', 3);
-INSERT INTO Madre (nombre, apellido, comite, estado, fk_id_usuario) VALUES ('Andrea'  , 'Faucheux' ,''          , 'A', 4);
-INSERT INTO Madre (nombre, apellido, comite, estado, fk_id_usuario) VALUES ('Sonia'   , 'Velarde'  ,'Comite XXX', 'A', 5);
+select * from Reunion
+INSERT INTO Madre (nombre, apellido, horas, obserbaciones, comite, estado, fk_id_usuario) VALUES ('Graciela', 'Arcaya'   ,5,'Observación XXX','Comite XXX', 'A', 1);
+INSERT INTO Madre (nombre, apellido, horas, obserbaciones, comite, estado, fk_id_usuario) VALUES ('Ana'     , 'Condori'  ,6,'Observación XXX','Comite XXX', 'A', 2);
+INSERT INTO Madre (nombre, apellido, horas, obserbaciones, comite, estado, fk_id_usuario) VALUES ('Carolina', 'Tapia'    ,7,'Observación XXX','Comite XXX', 'A', 3);
+INSERT INTO Madre (nombre, apellido, horas, obserbaciones, comite, estado, fk_id_usuario) VALUES ('Andrea'  , 'Faucheux' ,8,'Observación XXX',''          , 'A', 4);
+INSERT INTO Madre (nombre, apellido, horas, obserbaciones, comite, estado, fk_id_usuario) VALUES ('Sonia'   , 'Velarde'  ,9,'Observación XXX','Comite XXX', 'A', 5);
 
 create table Ranking(
   id  int PRIMARY KEY NOT NULL IDENTITY,
@@ -75,21 +77,20 @@ create table Ranking(
   foreign key (fk_id_madre) references Madre(id)
 )
 
-
 CREATE TABLE Reunion
 (
   id          int PRIMARY KEY NOT NULL IDENTITY,
-  nombre varchar (30) NOT NULL, --(de la reunion)
+  nombre      varchar(30)     NOT NULL, --(de la reunion)
   descripcion text            NOT NULL,
-  importancia varchar(30) NOT NULL,
-  hora int NOT NULL,
-  fecha       date            NOT NULL,
+  importancia varchar(30)     NOT NULL,
+  fecha       varchar(30)     NOT NULL,
   estado      nvarchar(1)     NOT NULL,
   id_madre    int             NOT NULL,
-  CONSTRAINT FK__Reunion__id_madr__3B75D760 FOREIGN KEY (id_madre) REFERENCES bd_proyecto_cuna_web2.dbo.Madre (id)
+  CONSTRAINT FKReunionid_madr__3B75D760 FOREIGN KEY (id_madre) REFERENCES bd_proyecto_cuna_web2.dbo.Madre (id)
 );
-INSERT INTO Reunion (nombre, descripcion,importancia, hora, fecha, estado, id_madre) VALUES ('Reunion 1', 'Reunion 1','Alta', '08:30', '2018-10-26', 'A', 1);
-INSERT INTO Reunion (nombre, descripcion,importancia, hora, fecha, estado, id_madre) VALUES ('Reunion 2', 'Reunion 2','Alta', '08:30', '2018-10-27', 'A', 2);
+
+INSERT INTO Reunion (nombre, descripcion,importancia, fecha, estado, id_madre) VALUES ('Reunion 1', 'Reunion 1','Alta', '2018-10-26', 'A', 1);
+INSERT INTO Reunion (nombre, descripcion,importancia, fecha, estado, id_madre) VALUES ('Reunion 2', 'Reunion 2','Alta', '2018-10-27', 'A', 2);
 
 CREATE TABLE Padre
 (
@@ -137,10 +138,10 @@ INSERT INTO Ninio (nombre, fecha_nacimiento, estado, fk_id_cuidadora, fk_id_padr
 
 CREATE TABLE DatosMedicos
 (
-    id int PRIMARY KEY NOT NULL IDENTITY,
-    nombre NOT NULL,
+    id int PRIMARY KEY	NOT NULL IDENTITY,
+    nombre varchar(50)	NOT NULL,
     altura decimal(5,2) NOT NULL,
-    peso decimal(5,2) NOT NULL,
+    peso decimal(5,2)	NOT NULL,
     indice_nutricion varchar(20) NOT NULL,
     fecha_revision date NOT NULL,
     fk_id_ninio int not null,
