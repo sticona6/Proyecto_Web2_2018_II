@@ -2,7 +2,6 @@ CREATE TABLE Usuario (
   id      int identity primary key not null,
   usuario varchar(20)              not null,
   clave   varchar(100)             not null,
-  --edad  int					   not null, --(de los usuarios)
   tipo    varchar(30)              not null,
   estado  nvarchar(1)              not null,
   imagen  varchar(100),
@@ -38,27 +37,27 @@ values ('jorge1'   , 'e10adc3949ba59abbe56e057f20f883e','Madre Familia','A','');
 CREATE TABLE MetodoAprendizaje
 (
     id int PRIMARY KEY NOT NULL IDENTITY,
-	--nombre varchar(30) NOT NULL,	(del metodo)--
+    nombre varchar(30) NOT NULL,
     descripcion text NOT NULL,
     rango_edad varchar(15) NOT NULL,
     procedimiento text NOT NULL,
-	--estado nvarchar(1) NOT NULL
+    estado nvarchar(1) not null
 );
-INSERT INTO MetodoAprendizaje (descripcion, rango_edad, procedimiento) VALUES ('Descripcion XXX', '6-9 meses', 'Procedimineto XXX');
-INSERT INTO MetodoAprendizaje (descripcion, rango_edad, procedimiento) VALUES ('Descripcion XXX', '10-12 meses', 'Procedimineto XXX');
-INSERT INTO MetodoAprendizaje (descripcion, rango_edad, procedimiento) VALUES ('Descripcion XXX', '13-18 meses', 'Procedimineto XXX');
-INSERT INTO MetodoAprendizaje (descripcion, rango_edad, procedimiento) VALUES ('Descripcion XXX', '19-24 meses', 'Procedimineto XXX');
-INSERT INTO MetodoAprendizaje (descripcion, rango_edad, procedimiento) VALUES ('Descripcion XXX', '25-36 meses', 'Procedimineto XXX');
+INSERT INTO MetodoAprendizaje (nombre, descripcion, rango_edad, procedimiento, estado) VALUES ('Metodo Aprendizaje1', 'Descripcion XXX', '6-9 meses', 'Procedimineto XXX', 'A');
+INSERT INTO MetodoAprendizaje (nombre, descripcion, rango_edad, procedimiento, estado) VALUES ('Metodo Aprendizaje2', 'Descripcion XXX', '10-12 meses', 'Procedimineto XXX', 'A');
+INSERT INTO MetodoAprendizaje (nombre, descripcion, rango_edad, procedimiento, estado) VALUES ('Metodo Aprendizaje3', 'Descripcion XXX', '13-18 meses', 'Procedimineto XXX', 'A');
+INSERT INTO MetodoAprendizaje (nombre, descripcion, rango_edad, procedimiento, estado) VALUES ('Metodo Aprendizaje4', 'Descripcion XXX', '19-24 meses', 'Procedimineto XXX', 'A');
+INSERT INTO MetodoAprendizaje (nombre, descripcion, rango_edad, procedimiento, estado) VALUES ('Metodo Aprendizaje5', 'Descripcion XXX', '25-36 meses', 'Procedimineto XXX', 'A');
 
 CREATE TABLE Madre
 (
   id            int PRIMARY KEY NOT NULL IDENTITY,
-  nombre varchar(30) not null,
-  apellido varchar(30) not null,
-  --horas int not null,--(de trabajo)
-  --obserbaciones text not null --(mumero de insidentes)
+  nombre        varchar(30)     not null,
+  apellido      varchar(30)     not null,
+  horas int not null,
+  obserbaciones text not null, --(mumero de insidentes)
   comite        varchar(20),
-  estado nvarchar(1) not null,
+  estado        nvarchar(1)     not null,
   fk_id_usuario int             not null,
   foreign key (fk_id_usuario) references Usuario (id)
 );
@@ -68,22 +67,28 @@ INSERT INTO Madre (nombre, apellido, comite, estado, fk_id_usuario) VALUES ('Car
 INSERT INTO Madre (nombre, apellido, comite, estado, fk_id_usuario) VALUES ('Andrea'  , 'Faucheux' ,''          , 'A', 4);
 INSERT INTO Madre (nombre, apellido, comite, estado, fk_id_usuario) VALUES ('Sonia'   , 'Velarde'  ,'Comite XXX', 'A', 5);
 
+create table Ranking(
+  id  int PRIMARY KEY NOT NULL IDENTITY,
+  puntuacion int not null,
+  fk_id_madre int not null,
+  foreign key (fk_id_madre) references Madre(id)
+)
 
 
 CREATE TABLE Reunion
 (
   id          int PRIMARY KEY NOT NULL IDENTITY,
-  --nombre varchar (30) NOT NULL,(de la reunion)
+  nombre varchar (30) NOT NULL, --(de la reunion)
   descripcion text            NOT NULL,
-  --importancia varchar(30) NOT NULL, (de la reunion)
-  --hora int NOT NULL,
+  importancia varchar(30) NOT NULL,
+  hora int NOT NULL,
   fecha       date            NOT NULL,
   estado      nvarchar(1)     NOT NULL,
   id_madre    int             NOT NULL,
   CONSTRAINT FK__Reunion__id_madr__3B75D760 FOREIGN KEY (id_madre) REFERENCES bd_proyecto_cuna_web2.dbo.Madre (id)
 );
-INSERT INTO Reunion (descripcion, fecha, estado, id_madre) VALUES ('Reunion 1', '2018-10-26', 'A', 1);
-INSERT INTO Reunion (descripcion, fecha, estado, id_madre) VALUES ('Reunion 2', '2018-10-27', 'A', 2);
+INSERT INTO Reunion (nombre, descripcion,importancia, hora, fecha, estado, id_madre) VALUES ('Reunion 1', 'Reunion 1','Alta', '08:30', '2018-10-26', 'A', 1);
+INSERT INTO Reunion (nombre, descripcion,importancia, hora, fecha, estado, id_madre) VALUES ('Reunion 2', 'Reunion 2','Alta', '08:30', '2018-10-27', 'A', 2);
 
 CREATE TABLE Padre
 (
@@ -132,7 +137,7 @@ INSERT INTO Ninio (nombre, fecha_nacimiento, estado, fk_id_cuidadora, fk_id_padr
 CREATE TABLE DatosMedicos
 (
     id int PRIMARY KEY NOT NULL IDENTITY,
-	--nombre NOT NULL, (de la revision)
+    nombre NOT NULL,
     altura decimal(5,2) NOT NULL,
     peso decimal(5,2) NOT NULL,
     indice_nutricion varchar(20) NOT NULL,
@@ -141,38 +146,40 @@ CREATE TABLE DatosMedicos
     FOREIGN KEY (fk_id_ninio) REFERENCES Ninio
 );
 
-INSERT INTO DatosMedicos (altura, peso, indice_nutricion, fecha_revision, fk_id_ninio) VALUES (50.30, 3.40, 'Nutrido', '2018-10-24', 1);
-INSERT INTO DatosMedicos (altura, peso, indice_nutricion, fecha_revision, fk_id_ninio) VALUES (42.35, 2.96, 'Desnutrido', '2018-10-24', 2);
-INSERT INTO DatosMedicos (altura, peso, indice_nutricion, fecha_revision, fk_id_ninio) VALUES (50.30, 3.40, 'Nutrido', '2018-10-24', 3);
-INSERT INTO DatosMedicos (altura, peso, indice_nutricion, fecha_revision, fk_id_ninio) VALUES (50.30, 3.40, 'Nutrido', '2018-10-24', 4);
+INSERT INTO DatosMedicos (nombre, altura, peso, indice_nutricion, fecha_revision, fk_id_ninio) VALUES ('revision1', 50.30, 3.40, 'Nutrido', '2018-10-24', 1);
+INSERT INTO DatosMedicos (nombre, altura, peso, indice_nutricion, fecha_revision, fk_id_ninio) VALUES ('revision2', 42.35, 2.96, 'Desnutrido', '2018-10-24', 2);
+INSERT INTO DatosMedicos (nombre, altura, peso, indice_nutricion, fecha_revision, fk_id_ninio) VALUES ('revision3', 50.30, 3.40, 'Nutrido', '2018-10-24', 3);
+INSERT INTO DatosMedicos (nombre, altura, peso, indice_nutricion, fecha_revision, fk_id_ninio) VALUES ('revision4', 50.30, 3.40, 'Nutrido', '2018-10-24', 4);
 
 CREATE TABLE Racion
 (
     id int PRIMARY KEY NOT NULL IDENTITY,
-	--desayuno varchar(50) NOT NULL,	--(en vez de descripcion)
-	--refrigerio varchar(50) NOT NULL, --(en vez de descripcion)
-	--almuerzo varchar(50) NOT NULL, --(en vez de descripcion)
-	--postre varchar(50) NOT NULL, --(en vez de descripcion)
-    descripcion text NOT NULL,
+    desayuno varchar(50) NOT NULL,    
+    refrigerio varchar(50) NOT NULL,   
+    almuerzo varchar(50) NOT NULL,     
+    postre varchar(50) NOT NULL,
     fecha date NOT NULL,
     estado nvarchar(1) NOT NULL,
     fk_id_ninio int NOT NULL,
     CONSTRAINT FK__Racion__fk_id_ni__49C3F6B7 FOREIGN KEY (fk_id_ninio) REFERENCES bd_proyecto_cuna_web2.dbo.Ninio (id)
 );
-INSERT INTO Racion (descripcion, fecha, estado, fk_id_ninio) VALUES ('Desayuno: quinua refrigerio: frutas almuerzo: pescado', '2018-10-24', 'A', 1);
-INSERT INTO Racion (descripcion, fecha, estado, fk_id_ninio) VALUES ('Desayuno: quinua refrigerio: frutas almuerzo: pescado', '2018-10-25', 'A', 2);
+INSERT INTO Racion (desayuno, refrigerio, almuerzo, postre, fecha, estado, fk_id_ninio) VALUES ('quinua', 'frutas', 'pescado', 'manzana', '2018-10-24', 'A', 1);
+INSERT INTO Racion (desayuno, refrigerio, almuerzo, postre, fecha, estado, fk_id_ninio) VALUES ('quinua', 'frutas', 'pescado', 'manzana', '2018-10-25', 'A', 2);
 
 CREATE TABLE DatosQR
 (
-    id int PRIMARY KEY NOT NULL IDENTITY,
-    fk_id_racion int NOT NULL,
-    CONSTRAINT FK__DatosQR__fk_id_r__4F7CD00D FOREIGN KEY (fk_id_racion) REFERENCES bd_proyecto_cuna_web2.dbo.Racion (id)
+  id int PRIMARY KEY NOT NULL IDENTITY,
+  qr varchar(100),
+  fecha date not null,
+  fk_id_racion int NOT NULL,
+  CONSTRAINT FK__DatosQR__fk_id_r__4F7CD00D FOREIGN KEY (fk_id_racion) REFERENCES bd_proyecto_cuna_web2.dbo.Racion (id)
 );
 
 
 CREATE TABLE Observacion
 (
     id int PRIMARY KEY NOT NULL IDENTITY,
+    titulo varchar(50) not null,
     descripcion text NOT NULL,
     fecha date NOT NULL,
     fk_id_madre_cuidadora int NOT NULL,
