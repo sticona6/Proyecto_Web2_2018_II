@@ -2,31 +2,32 @@ CREATE TABLE Usuario (
   id      int identity primary key not null,
   usuario varchar(20)              not null,
   clave   varchar(100)             not null,
+  edad	  varchar(2)			   not null,
   tipo    varchar(30)              not null,
   estado  nvarchar(1)              not null,
   imagen  varchar(100),
 );
 
-insert into Usuario(usuario, clave, tipo, estado, imagen)
-values ('garcaya'  , 'e10adc3949ba59abbe56e057f20f883e','Madre Cuidadora','A','');
+insert into Usuario(usuario, clave, edad, tipo, estado, imagen)
+values ('garcaya'  , 'e10adc3949ba59abbe56e057f20f883e','30','Madre Cuidadora','A','');
 
 insert into Usuario(usuario, clave, tipo, estado, imagen)
-values ('acondori'  , 'e10adc3949ba59abbe56e057f20f883e','Madre Cuidadora','A','');
+values ('acondori'  , 'e10adc3949ba59abbe56e057f20f883e','32','Madre Cuidadora','A','');
 
 insert into Usuario(usuario, clave, tipo, estado, imagen)
-values ('ctapia'   , 'e10adc3949ba59abbe56e057f20f883e','Madre Guia','A','');
+values ('ctapia'   , 'e10adc3949ba59abbe56e057f20f883e','33','Madre Guia','A','');
 
 insert into Usuario(usuario, clave, tipo, estado, imagen)
-values ('afaucheux', 'e10adc3949ba59abbe56e057f20f883e','Madre Jefa','A','');
+values ('afaucheux', 'e10adc3949ba59abbe56e057f20f883e','34','Madre Jefa','A','');
 
 insert into Usuario(usuario, clave, tipo, estado, imagen)
-values ('svelarde' , 'e10adc3949ba59abbe56e057f20f883e','Madre Familia','A','');
+values ('svelarde' , 'e10adc3949ba59abbe56e057f20f883e','35','Madre Familia','A','');
 
 insert into Usuario(usuario, clave, tipo, estado, imagen)
-values ('pedro1'   , 'e10adc3949ba59abbe56e057f20f883e','Madre Familia','A','');
+values ('pedro1'   , 'e10adc3949ba59abbe56e057f20f883e','36','Madre Familia','A','');
 
 insert into Usuario(usuario, clave, tipo, estado, imagen)
-values ('elopez'   , 'e10adc3949ba59abbe56e057f20f883e','Madre Familia','A','');
+values ('elopez'   , 'e10adc3949ba59abbe56e057f20f883e','37','Madre Familia','A','');
 
 insert into Usuario(usuario, clave, tipo, estado, imagen)
 values ('elanchipa', 'e10adc3949ba59abbe56e057f20f883e','Madre Familia','A','');
