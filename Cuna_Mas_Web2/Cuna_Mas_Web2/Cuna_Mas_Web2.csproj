@@ -552,12 +552,17 @@
     <Compile Include="Controllers\Inicio\Madre_FamiliaController.cs" />
     <Compile Include="Controllers\Inicio\Madre_GuiaController.cs" />
     <Compile Include="Controllers\LoginController.cs" />
+    <Compile Include="Controllers\Mantenimiento\DatosMedicosController.cs" />
     <Compile Include="Controllers\Mantenimiento\DatosQRController.cs" />
+    <Compile Include="Controllers\Mantenimiento\MadreController.cs" />
     <Compile Include="Controllers\Mantenimiento\MetodoAprendizajeController.cs" />
     <Compile Include="Controllers\Mantenimiento\NinioController.cs" />
     <Compile Include="Controllers\Mantenimiento\ObservacionController.cs" />
+    <Compile Include="Controllers\Mantenimiento\PadreController.cs" />
     <Compile Include="Controllers\Mantenimiento\RacionController.cs" />
+    <Compile Include="Controllers\Mantenimiento\RankingController.cs" />
     <Compile Include="Controllers\Mantenimiento\ReunionController.cs" />
+    <Compile Include="Controllers\Mantenimiento\UsuarioController.cs" />
     <Compile Include="Controllers\VisualizarController.cs" />
     <Compile Include="Filters\AdminFilters.cs" />
     <Compile Include="Global.asax.cs">
@@ -596,6 +601,7 @@
     <Folder Include="Assets\vendor\font-awesome\less\" />
     <Folder Include="Assets\vendor\font-awesome\scss\" />
     <Folder Include="Views\Administracion\" />
+    <Folder Include="Views\DatosMedicos\" />
     <Folder Include="Views\DatosQR\" />
     <Folder Include="Views\Default\" />
     <Folder Include="Views\Grafico\" />
@@ -607,8 +613,11 @@
     <Folder Include="Views\MetodoAprendizaje\" />
     <Folder Include="Views\Ninio\" />
     <Folder Include="Views\Observacion\" />
+    <Folder Include="Views\Padre\" />
     <Folder Include="Views\Racion\" />
+    <Folder Include="Views\Ranking\" />
     <Folder Include="Views\Reunion\" />
+    <Folder Include="Views\Usuario\" />
     <Folder Include="Views\Visualizar\" />
   </ItemGroup>
   <PropertyGroup>

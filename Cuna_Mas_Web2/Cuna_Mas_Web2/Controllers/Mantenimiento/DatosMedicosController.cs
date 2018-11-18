@@ -7,16 +7,13 @@ using System.Web.Mvc;
 using Cuna_Mas_Web2.Models;
 using Cuna_Mas_Web2.Filters;
 
-namespace Cuna_Mas_Web2.Controllers.Mantenimiento.Madre
+namespace Cuna_Mas_Web2.Controllers.Mantenimiento
 {
-    public class NinioController : Controller
+    public class DatosMedicosController : Controller
     {
+        private DatosMedicos datosmedicos = new DatosMedicos();
         private Ninio ninio = new Ninio();
-        private MetodoAprendizaje metodo = new MetodoAprendizaje();
-        private Padre padre = new Padre();
-        private Models.Madre madre = new Models.Madre();
-
-        // GET: Ninio
+        // GET: DatosMedicos
         public ActionResult Index()
         {
             return View();
@@ -29,20 +26,19 @@ namespace Cuna_Mas_Web2.Controllers.Mantenimiento.Madre
 
         public ActionResult AgregarEditar(int id = 0)
         {
-            ViewBag.madre = madre.Listar();
-            ViewBag.padre = padre.Listar();
-            ViewBag.metodo = metodo.Listar();
+            ViewBag.madre = ninio.Listar();
+
             return View(
-                id == 0 ? new Ninio()
+                id == 0 ? new Ninio() //agregar un nuevo objeto
                 : ninio.Obtener(id)
                 );
         }
 
-        public ActionResult Guardar(Ninio ninio)
+        public ActionResult Guardar(Reunion reunion)
         {
             if (ModelState.IsValid)
             {
-                ninio.Guardar();
+                reunion.Guardar();
                 return Redirect("~/Ninio");
             }
             else

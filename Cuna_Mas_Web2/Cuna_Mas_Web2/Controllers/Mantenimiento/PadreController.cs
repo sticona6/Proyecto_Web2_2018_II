@@ -7,16 +7,15 @@ using System.Web.Mvc;
 using Cuna_Mas_Web2.Models;
 using Cuna_Mas_Web2.Filters;
 
-namespace Cuna_Mas_Web2.Controllers.Mantenimiento.Madre
+namespace Cuna_Mas_Web2.Controllers.Mantenimiento
 {
-    public class NinioController : Controller
+    public class PadreController : Controller
     {
-        private Ninio ninio = new Ninio();
-        private MetodoAprendizaje metodo = new MetodoAprendizaje();
         private Padre padre = new Padre();
+        private Usuario usuario = new Usuario();
+        private Reunion reunion = new Reunion();
         private Models.Madre madre = new Models.Madre();
-
-        // GET: Ninio
+        // GET: Padre
         public ActionResult Index()
         {
             return View();
@@ -24,38 +23,39 @@ namespace Cuna_Mas_Web2.Controllers.Mantenimiento.Madre
 
         public ActionResult Ver(int id)
         {
-            return View(ninio.Obtener(id));
+            return View(reunion.Obtener(id));
         }
 
         public ActionResult AgregarEditar(int id = 0)
         {
             ViewBag.madre = madre.Listar();
-            ViewBag.padre = padre.Listar();
-            ViewBag.metodo = metodo.Listar();
+            ViewBag.padre = madre.Listar();
+            ViewBag.reunion = madre.Listar();
             return View(
-                id == 0 ? new Ninio()
-                : ninio.Obtener(id)
+                id == 0 ? new Padre() //agregar un nuevo objeto
+                : padre.Obtener(id)
                 );
         }
 
-        public ActionResult Guardar(Ninio ninio)
+        public ActionResult Guardar(Padre padre)
         {
             if (ModelState.IsValid)
             {
-                ninio.Guardar();
-                return Redirect("~/Ninio");
+                padre.Guardar();
+                return Redirect("~/Padre");
             }
             else
             {
-                return View("~/Views/Ninio/AgregarEditar.cshtml", ninio);
+                return View("~/Views/Padre/AgregarEditar.cshtml", reunion);
             }
         }
 
         public ActionResult Eliminar(int id)
         {
-            ninio.id = id;
-            ninio.Eliminar();
-            return Redirect("~/Ninio");
+            padre.id = id;
+            padre.Eliminar();
+            return Redirect("~/Padre");
         }
     }
+
 }
