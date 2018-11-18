@@ -6,6 +6,9 @@ namespace Cuna_Mas_Web2.Models
     using System.ComponentModel.DataAnnotations.Schema;
     using System.Data.Entity.Spatial;
 
+    using System.Data.Entity;
+    using System.Linq;
+
     [Table("Madre")]
     public partial class Madre
     {
@@ -64,5 +67,78 @@ namespace Cuna_Mas_Web2.Models
 
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Reunion> Reunion { get; set; }
+
+        public List<Madre> Listar()
+        {
+            var objTipo = new List<Madre>();
+            try
+            {
+                using (var db = new Model_CM())
+                {
+                    objTipo = db.Madre.Include("Usuario").ToList();
+                }
+            }
+            catch (Exception)
+            {
+                throw;
+            }
+            return objTipo;
+        }
+        public Madre Obtener(int id)
+        {
+            var objTipo = new Madre();
+            try
+            {
+                using (var db = new Model_CM())
+                {
+                    objTipo = db.Madre.Include("Usuario")
+                        .Where(x => x.id == id)
+                        .SingleOrDefault();
+                }
+            }
+            catch (Exception)
+            {
+                throw;
+            }
+            return objTipo;
+        }
+        public void Guardar()
+        {
+            try
+            {
+                using (var db = new Model_CM())
+                {
+                    if (this.id > 0)
+                    {
+                        db.Entry(this).State = EntityState.Modified;
+                    }
+                    else
+                    {
+                        db.Entry(this).State = EntityState.Added;
+                    }
+                    db.SaveChanges();
+                }
+            }
+            catch (Exception)
+            {
+                throw;
+            }
+        }
+        public void Eliminar()
+        {
+            try
+            {
+                using (var db = new Model_CM())
+                {
+                    db.Entry(this).State = EntityState.Deleted;
+                    db.SaveChanges();
+                }
+            }
+            catch (Exception)
+            {
+                throw;
+            }
+        }
+
     }
 }

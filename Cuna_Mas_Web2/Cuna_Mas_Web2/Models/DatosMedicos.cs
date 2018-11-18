@@ -6,6 +6,9 @@ namespace Cuna_Mas_Web2.Models
     using System.ComponentModel.DataAnnotations.Schema;
     using System.Data.Entity.Spatial;
 
+    using System.Data.Entity;
+    using System.Linq;
+
     public partial class DatosMedicos
     {
         public int id { get; set; }
@@ -28,5 +31,78 @@ namespace Cuna_Mas_Web2.Models
         public int fk_id_ninio { get; set; }
 
         public virtual Ninio Ninio { get; set; }
+
+        public List<DatosMedicos> Listar()
+        {
+            var objTipo = new List<DatosMedicos>();
+            try
+            {
+                using (var db = new Model_CM())
+                {
+                    objTipo = db.DatosMedicos.Include("Ninio").ToList();
+                }
+            }
+            catch (Exception)
+            {
+                throw;
+            }
+            return objTipo;
+        }
+        public DatosMedicos Obtener(int id)
+        {
+            var objTipo = new DatosMedicos();
+            try
+            {
+                using (var db = new Model_CM())
+                {
+                    objTipo = db.DatosMedicos.Include("Ninio")
+                        .Where(x => x.id == id)
+                        .SingleOrDefault();
+                }
+            }
+            catch (Exception)
+            {
+                throw;
+            }
+            return objTipo;
+        }
+        public void Guardar()
+        {
+            try
+            {
+                using (var db = new Model_CM())
+                {
+                    if (this.id > 0)
+                    {
+                        db.Entry(this).State = EntityState.Modified;
+                    }
+                    else
+                    {
+                        db.Entry(this).State = EntityState.Added;
+                    }
+                    db.SaveChanges();
+                }
+            }
+            catch (Exception)
+            {
+                throw;
+            }
+        }
+        public void Eliminar()
+        {
+            try
+            {
+                using (var db = new Model_CM())
+                {
+                    db.Entry(this).State = EntityState.Deleted;
+                    db.SaveChanges();
+                }
+            }
+            catch (Exception)
+            {
+                throw;
+            }
+        }
+
     }
 }

@@ -6,6 +6,9 @@ namespace Cuna_Mas_Web2.Models
     using System.ComponentModel.DataAnnotations.Schema;
     using System.Data.Entity.Spatial;
 
+    using System.Data.Entity;
+    using System.Linq;
+
     [Table("Padre")]
     public partial class Padre
     {
@@ -54,5 +57,78 @@ namespace Cuna_Mas_Web2.Models
         public virtual Reunion Reunion { get; set; }
 
         public virtual Usuario Usuario { get; set; }
+
+        public List<Padre> Listar()
+        {
+            var objTipo = new List<Padre>();
+            try
+            {
+                using (var db = new Model_CM())
+                {
+                    objTipo = db.Padre.Include("Madre").ToList();
+                }
+            }
+            catch (Exception)
+            {
+                throw;
+            }
+            return objTipo;
+        }
+        public Padre Obtener(int id)
+        {
+            var objTipo = new Padre();
+            try
+            {
+                using (var db = new Model_CM())
+                {
+                    objTipo = db.Padre.Include("Madre")
+                        .Where(x => x.id == id)
+                        .SingleOrDefault();
+                }
+            }
+            catch (Exception)
+            {
+                throw;
+            }
+            return objTipo;
+        }
+        public void Guardar()
+        {
+            try
+            {
+                using (var db = new Model_CM())
+                {
+                    if (this.id > 0)
+                    {
+                        db.Entry(this).State = EntityState.Modified;
+                    }
+                    else
+                    {
+                        db.Entry(this).State = EntityState.Added;
+                    }
+                    db.SaveChanges();
+                }
+            }
+            catch (Exception)
+            {
+                throw;
+            }
+        }
+        public void Eliminar()
+        {
+            try
+            {
+                using (var db = new Model_CM())
+                {
+                    db.Entry(this).State = EntityState.Deleted;
+                    db.SaveChanges();
+                }
+            }
+            catch (Exception)
+            {
+                throw;
+            }
+        }
+
     }
 }

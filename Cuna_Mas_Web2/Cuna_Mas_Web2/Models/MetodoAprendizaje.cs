@@ -6,6 +6,9 @@ namespace Cuna_Mas_Web2.Models
     using System.ComponentModel.DataAnnotations.Schema;
     using System.Data.Entity.Spatial;
 
+    using System.Data.Entity;
+    using System.Linq;
+
     [Table("MetodoAprendizaje")]
     public partial class MetodoAprendizaje
     {
@@ -39,5 +42,78 @@ namespace Cuna_Mas_Web2.Models
 
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Ninio> Ninio { get; set; }
+
+        public List<MetodoAprendizaje> Listar()
+        {
+            var objTipo = new List<MetodoAprendizaje>();
+            try
+            {
+                using (var db = new Model_CM())
+                {
+                    objTipo = db.MetodoAprendizaje.ToList();
+                }
+            }
+            catch (Exception)
+            {
+                throw;
+            }
+            return objTipo;
+        }
+        public MetodoAprendizaje Obtener(int id)
+        {
+            var objTipo = new MetodoAprendizaje();
+            try
+            {
+                using (var db = new Model_CM())
+                {
+                    objTipo = db.MetodoAprendizaje
+                        .Where(x => x.id == id)
+                        .SingleOrDefault();
+                }
+            }
+            catch (Exception)
+            {
+                throw;
+            }
+            return objTipo;
+        }
+        public void Guardar()
+        {
+            try
+            {
+                using (var db = new Model_CM())
+                {
+                    if (this.id > 0)
+                    {
+                        db.Entry(this).State = EntityState.Modified;
+                    }
+                    else
+                    {
+                        db.Entry(this).State = EntityState.Added;
+                    }
+                    db.SaveChanges();
+                }
+            }
+            catch (Exception)
+            {
+                throw;
+            }
+        }
+        public void Eliminar()
+        {
+            try
+            {
+                using (var db = new Model_CM())
+                {
+                    db.Entry(this).State = EntityState.Deleted;
+                    db.SaveChanges();
+                }
+            }
+            catch (Exception)
+            {
+                throw;
+            }
+        }
+
     }
 }
