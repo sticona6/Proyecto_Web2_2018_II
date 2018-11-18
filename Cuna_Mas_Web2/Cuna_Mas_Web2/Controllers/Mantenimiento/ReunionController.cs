@@ -2,12 +2,13 @@ using System.Web.Mvc;
 using Cuna_Mas_Web2.Models;
 using Cuna_Mas_Web2.Filters;
 
-namespace Cuna_Mas_Web2.Controllers.Mantenimiento.Madre
+
+namespace Cuna_Mas_Web2.Controllers.Mantenimiento
 {
     public class ReunionController : Controller
     {
         private Reunion reunion = new Reunion();
-        private Models.Madre madre = new Models.Madre();
+        private Madre madre = new Madre();
 
         public ActionResult Index()
         {

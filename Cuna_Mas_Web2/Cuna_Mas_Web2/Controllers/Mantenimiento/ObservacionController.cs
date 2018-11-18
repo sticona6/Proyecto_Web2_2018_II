@@ -7,7 +7,7 @@ namespace Cuna_Mas_Web2.Controllers.Mantenimiento.Madre
     public class ObservacionController : Controller
     {
         private Observacion observacion = new Observacion();
-        private Madre madre = new Models.Madre();
+        private Madre madre = new Madre();
 
         // GET: Observacion
         public ActionResult Index()
