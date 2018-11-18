@@ -16,7 +16,7 @@ namespace Cuna_Mas_Web2.Controllers.Mantenimiento
         // GET: Madre
         public ActionResult Index()
         {
-            return View();
+            return View(madre.Listar());
         }
 
         public ActionResult Ver(int id)

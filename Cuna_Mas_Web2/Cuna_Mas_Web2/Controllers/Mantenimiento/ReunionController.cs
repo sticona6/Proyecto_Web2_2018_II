@@ -8,7 +8,7 @@ namespace Cuna_Mas_Web2.Controllers.Mantenimiento
     public class ReunionController : Controller
     {
         private Reunion reunion = new Reunion();
-        private Madre madre = new Madre();
+        private Models.Madre madre = new Models.Madre();
 
         public ActionResult Index()
         {
@@ -22,7 +22,7 @@ namespace Cuna_Mas_Web2.Controllers.Mantenimiento
 
         public ActionResult AgregarEditar(int id = 0)
         {
-            ViewBag.madre = madre.ListarCuidadora();
+            ViewBag.madre = madre.Listar();
 
             return View(
                 id == 0 ? new Reunion() //agregar un nuevo objeto

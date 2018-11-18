@@ -600,6 +600,7 @@
     <Content Include="Views\web.config" />
     <None Include="packages.config" />
     <Content Include="Views\_ViewStart.cshtml" />
+    <Content Include="Views\Madre\Index.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
@@ -616,7 +617,6 @@
     <Folder Include="Views\Default\" />
     <Folder Include="Views\Grafico\" />
     <Folder Include="Views\Jefa\" />
-    <Folder Include="Views\Madre\" />
     <Folder Include="Views\Madre_Familia\" />
     <Folder Include="Views\Madre_Guia\" />
     <Folder Include="Views\Mantenimiento\" />

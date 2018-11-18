@@ -7,7 +7,7 @@ namespace Cuna_Mas_Web2.Controllers.Mantenimiento.Madre
     public class ObservacionController : Controller
     {
         private Observacion observacion = new Observacion();
-        private Madre madre = new Madre();
+        private Models.Madre madre = new Models.Madre();
 
         // GET: Observacion
         public ActionResult Index()
@@ -21,7 +21,7 @@ namespace Cuna_Mas_Web2.Controllers.Mantenimiento.Madre
 
         public ActionResult AgregarEditar(int id = 0)
         {
-            ViewBag.madre = madre.ListarCuidadora();
+            ViewBag.madre = madre.Listar();
 
             return View(
                 id == 0 ? new Observacion() //agregar un nuevo objeto

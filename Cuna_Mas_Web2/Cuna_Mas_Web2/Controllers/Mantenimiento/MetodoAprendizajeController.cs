@@ -17,12 +17,10 @@ namespace Cuna_Mas_Web2.Controllers.Mantenimiento
         {
             return View();
         }
-
         public ActionResult Ver(int id)
         {
             return View(metodo.Obtener(id));
         }
-
         public ActionResult AgregarEditar(int id = 0)
         {
             return View(
@@ -30,7 +28,6 @@ namespace Cuna_Mas_Web2.Controllers.Mantenimiento
                 : metodo.Obtener(id)
                 );
         }
-
         public ActionResult Guardar(MetodoAprendizaje metodo)
         {
             if (ModelState.IsValid)
@@ -43,7 +40,6 @@ namespace Cuna_Mas_Web2.Controllers.Mantenimiento
                 return View("~/Views/MetodoAprendizaje/AgregarEditar.cshtml", metodo);
             }
         }
-
         public ActionResult Eliminar(int id)
         {
             metodo.id = id;
