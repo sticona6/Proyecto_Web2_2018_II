@@ -1,11 +1,7 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Web;
 using System.Web.Mvc;
-
 using Cuna_Mas_Web2.Models;
 using Cuna_Mas_Web2.Filters;
+
 
 namespace Cuna_Mas_Web2.Controllers.Mantenimiento
 {
@@ -13,7 +9,7 @@ namespace Cuna_Mas_Web2.Controllers.Mantenimiento
     {
         private Reunion reunion = new Reunion();
         private Madre madre = new Madre();
-        //GET: Reunion
+
         public ActionResult Index()
         {
             return View();
@@ -29,9 +25,9 @@ namespace Cuna_Mas_Web2.Controllers.Mantenimiento
             ViewBag.madre = madre.ListarCuidadora();
 
             return View(
-                id == 0 ? new Reunion()
-                : reunion.Obtener(id)
-                );
+                id == 0 ? new Reunion() //agregar un nuevo objeto
+                    : reunion.Obtener(id)
+            );
         }
 
         public ActionResult Guardar(Reunion reunion)
@@ -39,7 +35,7 @@ namespace Cuna_Mas_Web2.Controllers.Mantenimiento
             if (ModelState.IsValid)
             {
                 reunion.Guardar();
-                return Redirect("~/Reunion");
+                return Redirect("~/TablaReunion");
             }
             else
             {

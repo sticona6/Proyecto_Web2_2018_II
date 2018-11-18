@@ -4,20 +4,19 @@ using Cuna_Mas_Web2.Filters;
 
 namespace Cuna_Mas_Web2.Controllers.Mantenimiento.Madre
 {
-    public class RacionController : Controller
+    public class QRController : Controller
     {
-        // GET: Racion
+        // GET: QR
         private Racion objracion = new Racion();
-        private Ninio ovjninio = new Ninio();
 
         public ActionResult Index()
         {
-            return View();
+            return View(objracion.Listar());
         }
 
-        public ActionResult Ver(int id)
+        public ActionResult generarQR()
         {
-            return View(objracion.Obtener(id));
+            return View();
         }
     }
 }

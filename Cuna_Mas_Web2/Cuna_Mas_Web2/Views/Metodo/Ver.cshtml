@@ -1,0 +1,32 @@
+@model Cuna_Mas_Web2.Models.MetodoAprendizaje
+@{
+    ViewBag.Title = "Ver";
+}
+<br />
+<nav aria-label="breadcrumb">
+    <ol class="breadcrumb">
+        <li class="breadcrumb-item" style="padding-left:10px"><a href="~/Metodo/Index">Lista de Metodos de Aprendizaje</a></li>
+        <li class="breadcrumb-item active">@Model.descripcion</li>
+    </ol>
+</nav>
+<br />
+<div class="container">
+    <div class="row">
+        <div class="card col-md" style="margin: 0.2em 0.2em;">
+            <div class="card-body">
+                <h3>Datos Metodo</h3>
+                <p class="card-title"><b>Descripcion del metodo: </b></p>
+                <p class="card-title">@Model.descripcion</p>
+                <p class="card-text"><b>Rango de edades aplicable: </b>@Model.rango_edad</p>
+            </div>
+        </div>
+        <div class="card col-md" style="margin: 0.2em 0.2em;">
+            <div class="card-body">
+                <h3>Procedimiento</h3>
+                <p class="scard-text"><b>Nombre del Padre: </b></p>
+                <p class="scard-text">@Model.procedimiento</p>
+            </div>
+        </div>
+    </div>
+</div>
+<br />
