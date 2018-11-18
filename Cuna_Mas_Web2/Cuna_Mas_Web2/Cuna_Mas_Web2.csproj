@@ -49,6 +49,9 @@
     <Reference Include="EntityFramework.SqlServer, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
       <HintPath>..\packages\EntityFramework.6.2.0\lib\net45\EntityFramework.SqlServer.dll</HintPath>
     </Reference>
+    <Reference Include="Gma.QrCodeNet.Encoding, Version=0.4.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\QrCode.Net.0.4.0.0\lib\net45\Gma.QrCodeNet.Encoding.dll</HintPath>
+    </Reference>
     <Reference Include="Microsoft.CSharp" />
     <Reference Include="System.Runtime.Serialization" />
     <Reference Include="System.Security" />
@@ -545,7 +548,6 @@
     <Content Include="Views\Metodo\Ver.cshtml" />
     <Content Include="Views\Observacion\AgregarEditar.cshtml" />
     <Content Include="Views\Observacion\Ver.cshtml" />
-    <Content Include="Views\QR\Index.cshtml" />
     <Content Include="Views\Racion\Ver.cshtml" />
     <Content Include="Views\Reunion\AgregarEditar.cshtml" />
     <Content Include="Views\Reunion\Ver.cshtml" />
@@ -579,6 +581,7 @@
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
+    <Compile Include="Helpers\QRCodeHelper.cs" />
     <Compile Include="Models\DatosMedicos.cs" />
     <Compile Include="Models\DatosQR.cs" />
     <Compile Include="Models\HashHelper.cs" />
@@ -601,6 +604,9 @@
     <None Include="packages.config" />
     <Content Include="Views\_ViewStart.cshtml" />
     <Content Include="Views\Madre\Index.cshtml" />
+    <Content Include="Views\DatosQR\Index.cshtml" />
+    <Content Include="Views\Default\Index.cshtml" />
+    <Content Include="Views\DatosQR\AgregarEditar.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
@@ -612,9 +618,8 @@
     <Folder Include="App_Data\" />
     <Folder Include="Assets\vendor\font-awesome\less\" />
     <Folder Include="Assets\vendor\font-awesome\scss\" />
+    <Folder Include="Uploads\" />
     <Folder Include="Views\Administracion\" />
-    <Folder Include="Views\DatosQR\" />
-    <Folder Include="Views\Default\" />
     <Folder Include="Views\Grafico\" />
     <Folder Include="Views\Jefa\" />
     <Folder Include="Views\Madre_Familia\" />

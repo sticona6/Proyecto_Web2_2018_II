@@ -1,0 +1,95 @@
+﻿@model Cuna_Mas_Web2.Models.DatosQR
+@{
+    ViewBag.Title = "Index";
+    List<Cuna_Mas_Web2.Models.Ninio> ninios = ViewBag.ninios;
+    List<Cuna_Mas_Web2.Models.Racion> raciones = ViewBag.raciones;
+}
+
+<h2 class="jumbotron"> Datos QR </h2>
+
+<div class="d-flex flex-row bd-highlight mb-2">
+    <div class="p-2 flex-fill bd-highlight" style="padding-left:0 !important;">
+        <section class="tables" style="padding-top:0;">
+            <div class="container-fluid" style="padding:0;">
+                <div class="">
+                    <div class="">
+                        <div class="card">
+                            <div class="card-header d-flex align-items-center">
+                                <h3 class="h4">Tabla de Alimentación</h3>
+                            </div>
+                            <div class="card-body">
+                                <div class="table-responsive">
+                                    <table class="table">
+                                        <thead>
+                                            <tr>
+                                                <th>#</th>
+                                                <th>Desayuno</th>
+                                                <th>Refrigerio</th>
+                                                <th>Almuerzo</th>
+                                                <th>Postre</th>
+                                                <th>Niño</th>
+                                                <th>Acciones</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            @foreach (var item in raciones)
+                                            {
+                                                string descripcion = item.desayuno 
+                                                                    + ", " + item.refrigerio
+                                                                    + ", " + item.almuerzo
+                                                                    + ", " + item.postre;
+                                            <tr>
+                                                <th scope="row">@(item.id)</th>
+                                                <td>@(item.desayuno)</td>
+                                                <td>@(item.refrigerio)</td>
+                                                <td>@(item.almuerzo)</td>
+                                                <td>@(item.postre)</td>
+                                                <td>@(item.Ninio.nombre)</td>
+                                                <td>
+                                                    <a href="~/DatosQR/Guardar/@item.id" class="btn btn-sm btn-warning" id="generar">Generar QR</a>
+                                                </td>
+                                            </tr>
+                                            }
+                                        </tbody>
+                                    </table>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </div>
+    <div class="p-2 flex-fill bd-highlight">
+        <div id="output"></div>
+    </div>
+</div>
+
+
+<script>
+    //let qrcode = new QRCode("output", {
+    //    text: "http://fillmurray.com/",
+    //    width: 325,
+    //    height: 325,
+    //    colorDark: "#353139",
+    //    colorLight: "#ffffff",
+    //    correctLevel: QRCode.CorrectLevel.H
+    //});
+
+    //let y = document.getElementsByTagName('input');
+    //let des = "";
+    //for (i = 0; i < y.length; i++) {
+    //    if (y[i].type == "hidden") {
+    //        alert(y[i].value);
+    //    }
+    //}
+    
+
+    //document.getElementById('generar').addEventListener('click', () => {
+    //    qrcode.clear();
+        
+    //    let dataText = document.getElementById('datatext').value;
+        
+    //    qrcode.makeCode(dataText);
+    //})
+</script>
