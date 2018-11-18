@@ -1,0 +1,26 @@
+@model Cuna_Mas_Web2.Models.Reunion
+@{
+    ViewBag.Title = "Ver";
+}
+<br />
+<nav aria-label="breadcrumb">
+    <ol class="breadcrumb">
+        <li class="breadcrumb-item" style="padding-left:10px"><a href="~/Tablas/TablaReuniones">Lista Reuniones</a></li>
+        <li class="breadcrumb-item active">@Model.id</li>
+    </ol>
+</nav>
+<br />
+<div class="container">
+    <div class="row">
+        <div class="card col-md" style="margin: 0.2em 0.2em; padding-top:1em;">
+            <img class="card-img-top" src="~/Assets/img/avatar-0.jpg" alt="Card image cap">
+            <div class="card-body">
+                <h3>Datos de la reunión:</h3>
+                <p class="card-title"><b>Descripcion de la reunión: </b>@Model.descripcion</p>
+                <p class="card-title"><b>fecha: </b>@Model.fecha</p>
+                <p class="card-text"><b>Usuario: </b>@Model.estado</p>
+            </div>
+        </div>
+    </div>
+</div>
+<br />

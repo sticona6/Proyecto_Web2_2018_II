@@ -1,0 +1,55 @@
+@model List<Cuna_Mas_Web2.Models.MetodoAprendizaje>
+@{
+    ViewBag.Title = "Metodo de Aprendizaje";
+}
+<!-- Page Header-->
+<br />
+<!-- Breadcrumb-->
+<div class="breadcrumb-holder container-fluid">
+    <ul class="breadcrumb">
+        <li class="breadcrumb-item"><a href="~/Metodo/AgregarEditar/">Agregar nuevo</a></li>
+        <li class="breadcrumb-item active">Tablas</li>
+    </ul>
+</div>
+<section class="tables">
+    <div class="container-fluid">
+        <div class="">
+            <div class="">
+                <div class="card">
+                    <div class="card-header d-flex align-items-center">
+                        <h3 class="h4">Metodos de Aprendizaje</h3>
+                    </div>
+                    <div class="card-body">
+                        <div class="table-responsive">
+                            <table class="table">
+                                <thead>
+                                    <tr>
+                                        <th>#</th>
+                                        <th>Descripción</th>
+                                        <th>Rango de edades</th>
+                                        <th>Acciones</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    @foreach (var item in Model)
+                                    {
+                                        <tr>
+                                            <th scope="row">@(item.id)</th>
+                                            <td>@(item.descripcion)</td>
+                                            <td>@(item.rango_edad)</td>
+                                            <td>
+                                                <a href="~/Metodo/Ver/@item.id" class="btn btn-sm btn-warning">Detalles</a>
+                                                <a href="~/Metodo/AgregarEditar/@item.id" class="btn btn-sm btn-primary">Modificar</a>
+                                                <a href="~/Metodo/Eliminar/@item.id" class="btn btn-sm btn-danger" onclick="return confirm('¿Esta seguro de eliminar el registro ...?')">Eliminar</a>
+                                            </td>
+                                        </tr>
+                                    }
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>

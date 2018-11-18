@@ -1,0 +1,39 @@
+@model Cuna_Mas_Web2.Models.Racion
+@{
+    ViewBag.Title = "Ver";
+}
+
+<br />
+<nav aria-label="breadcrumb">
+    <ol class="breadcrumb">
+        <li class="breadcrumb-item" style="padding-left:10px"><a href="~/Tablas/TablaAlimentacion">Lista Alimentos</a></li>
+    </ol>
+</nav>
+<br />
+<div class="container">
+    <div class="row">
+        <div class="card col-md" style="margin: 0.2em 0.2em; padding-top:1em;">
+            <div class="card-body">
+                <h3>Datos Alimentacion</h3>
+                <p class="card-title"><b>Desayuno:</b></p>
+                <p class="card-text">@Model.desayuno</p>
+                
+                <p class="card-title"><b>Refrigerio:</b></p>
+                <p class="card-text">@Model.refrigerio</p>
+                
+                <p class="card-title"><b>Almuerzo:</b></p>
+                <p class="card-text">@Model.almuerzo</p>
+                
+                <p class="card-title"><b>Postre:</b></p>
+                <p class="card-text">@Model.postre</p>
+
+                <p class="card-title"><b>Fecha:</b></p>
+                <p class="card-text">@Model.fecha</p>
+
+                <p class="card-title"><b>Nombre completo del Niño:</b></p>
+                <p class="card-text">@Model.Ninio.nombre</p>
+            </div>
+        </div>
+    </div>
+</div>
+<br />

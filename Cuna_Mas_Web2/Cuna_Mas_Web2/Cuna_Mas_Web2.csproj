@@ -540,6 +540,15 @@
     <Content Include="Assets\vendor\popper.js\umd\popper.min.js" />
     <Content Include="Global.asax" />
     <Content Include="Views\Login\Index.cshtml" />
+    <Content Include="Views\Metodo\AgregarEditar.cshtml" />
+    <Content Include="Views\Metodo\Index.cshtml" />
+    <Content Include="Views\Metodo\Ver.cshtml" />
+    <Content Include="Views\Observacion\AgregarEditar.cshtml" />
+    <Content Include="Views\Observacion\Ver.cshtml" />
+    <Content Include="Views\QR\Index.cshtml" />
+    <Content Include="Views\Racion\Ver.cshtml" />
+    <Content Include="Views\Reunion\AgregarEditar.cshtml" />
+    <Content Include="Views\Reunion\Ver.cshtml" />
     <Content Include="Views\Shared\_Layout.cshtml" />
     <Content Include="Web.config" />
   </ItemGroup>
@@ -552,7 +561,12 @@
     <Compile Include="Controllers\Inicio\Madre_FamiliaController.cs" />
     <Compile Include="Controllers\Inicio\Madre_GuiaController.cs" />
     <Compile Include="Controllers\LoginController.cs" />
+    <Compile Include="Controllers\Mantenimiento\MetodoController.cs" />
     <Compile Include="Controllers\Mantenimiento\NinioController.cs" />
+    <Compile Include="Controllers\Mantenimiento\ObservacionController.cs" />
+    <Compile Include="Controllers\Mantenimiento\QRController.cs" />
+    <Compile Include="Controllers\Mantenimiento\RacionController.cs" />
+    <Compile Include="Controllers\Mantenimiento\ReunionController.cs" />
     <Compile Include="Controllers\VisualizarController.cs" />
     <Compile Include="Filters\AdminFilters.cs" />
     <Compile Include="Global.asax.cs">
