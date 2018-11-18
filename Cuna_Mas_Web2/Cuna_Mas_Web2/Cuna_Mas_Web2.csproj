@@ -545,7 +545,17 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="App_Start\RouteConfig.cs" />
+    <Compile Include="Controllers\DefaultController.cs" />
+    <Compile Include="Controllers\Inicio\Madre_CuidadoraController.cs" />
+    <Compile Include="Controllers\GraficoController.cs" />
+    <Compile Include="Controllers\Grafico\Administracion\GraficoController.cs" />
+    <Compile Include="Controllers\Inicio\Administracion\AdministracionController.cs" />
+    <Compile Include="Controllers\Inicio\Madre_FamiliaController.cs" />
+    <Compile Include="Controllers\Inicio\Madre_GuiaController.cs" />
     <Compile Include="Controllers\LoginController.cs" />
+    <Compile Include="Controllers\Mantenimiento\Administracion\MadreController.cs" />
+    <Compile Include="Controllers\Mantenimiento\NinioController.cs" />
+    <Compile Include="Controllers\VisualizarController.cs" />
     <Compile Include="Filters\AdminFilters.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
@@ -580,9 +590,18 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
-    <Folder Include="Assets\vendor\font-awesome\less" />
-    <Folder Include="Assets\vendor\font-awesome\scss" />
-    <Folder Include="Controllers\" />
+    <Folder Include="Assets\vendor\font-awesome\less\" />
+    <Folder Include="Assets\vendor\font-awesome\scss\" />
+    <Folder Include="Views\Administracion\" />
+    <Folder Include="Views\Default\" />
+    <Folder Include="Views\Grafico\" />
+    <Folder Include="Views\Jefa\" />
+    <Folder Include="Views\Madre\" />
+    <Folder Include="Views\Madre_Familia\" />
+    <Folder Include="Views\Madre_Guia\" />
+    <Folder Include="Views\Mantenimiento\" />
+    <Folder Include="Views\Ninio\" />
+    <Folder Include="Views\Visualizar\" />
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
