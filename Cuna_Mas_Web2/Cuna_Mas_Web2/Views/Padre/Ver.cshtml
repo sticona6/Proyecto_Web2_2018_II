@@ -1,0 +1,42 @@
+﻿@model Cuna_Mas_Web2.Models.Padre
+@{
+    ViewBag.Title = "Ver";
+}
+<br />
+<nav aria-label="breadcrumb">
+    <ol class="breadcrumb">
+        <li class="breadcrumb-item" style="padding-left:10px"><a href="~/Padre/Index">Lista Padres</a></li>
+        <li class="breadcrumb-item active">@Model.apoderado</li>
+    </ol>
+</nav>
+<br />
+<div class="container">
+    <div class="row">
+        <div class="card col-md" style="margin: 0.2em 0.2em; padding-top:1em;">
+            <div class="card-body">
+                <h3 class="text-center">Imagen de @Model.apoderado</h3>
+                <p class="card-text text-center"><img class="card-img-top" src="~/Assets/img/avatar-2.jpg" alt="Card image cap" style="width:150px;height:150px;"></p>
+            </div>
+        </div>
+        <div class="card col-md" style="margin: 0.2em 0.2em; padding-top:1em;">
+            <div class="card-body">
+                <h3>Datos Personales</h3>
+                <p class="card-title"><b>Nombres y Apellidos del Padre: </b>@Model.nombrePadre</p>
+                <p class="card-title"><b>Nombres y Apellidos de la Madre: </b>@Model.nombreMadre</p>
+                <p class="card-text"><b>Apoderado: </b>@Model.apoderado</p>
+                <p class="card-text"><b>Teléfono: </b>@Model.telefono</p>
+                <p class="card-text"><b>Dirección: </b>@Model.direccion</p>
+            </div>
+        </div>
+        <div class="card col-md" style="margin: 0.2em 0.2em; padding-top:1em;">
+            <div class="card-body">
+                <h3>Datos del Comite</h3>
+                <p class="card-text"><b>Estado: </b>@Model.estado</p>
+                <p class="card-text"><b>Madre: </b>@Model.Madre.nombre</p>
+                @*<p class="card-text"><b>Reunión: </b>@Model.Reunion.nombre</p>
+                <p class="card-text"><b>Usuario: </b>@Model.Usuario.usuario1</p>*@
+            </div>
+        </div>
+    </div>
+</div>
+<br />

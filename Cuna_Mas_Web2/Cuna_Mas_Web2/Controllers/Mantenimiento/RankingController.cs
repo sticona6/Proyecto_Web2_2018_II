@@ -16,7 +16,7 @@ namespace Cuna_Mas_Web2.Controllers.Mantenimiento
         // GET: Ranking
         public ActionResult Index()
         {
-            return View();
+            return View(ranking.Listar());
         }
 
         public ActionResult Ver(int id)

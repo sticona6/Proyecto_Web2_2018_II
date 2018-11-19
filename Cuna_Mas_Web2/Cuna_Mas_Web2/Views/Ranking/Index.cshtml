@@ -1,0 +1,54 @@
+﻿@model List<Cuna_Mas_Web2.Models.Ranking>
+@{
+    ViewBag.Title = "Tabla";
+}
+<br />
+<div class="breadcrumb-holder container-fluid">
+    <ul class="breadcrumb">
+        <li class="breadcrumb-item"><a href="index.html">Inicio</a></li>
+        <li class="breadcrumb-item"><a href="~/Ranking/AgregarEditar/">Agregar nuevo</a></li>
+        <li class="breadcrumb-item active">Tablas</li>
+    </ul>
+</div>
+<section class="tables">
+    <div class="container-fluid">
+        <div class="">
+            <div class="">
+                <div class="card">
+                    <div class="card-header d-flex align-items-center">
+                        <h3 class="h4">Datos Ranking</h3>
+                    </div>
+                    <div class="card-body">
+                        <div class="table-responsive">
+                            <table class="table">
+                                <thead>
+                                    <tr>
+                                        <th>#</th>
+                                        <th>Puntuación</th>
+                                        <th>Madre Cuidadora</th>
+                                        <th>Acciones</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    @foreach (var item in Model)
+                                    {
+                                        <tr>
+                                            <th scope="row">@(item.id)</th>
+                                            <td>@(item.puntuacion)</td>
+                                            <td>@(item.Madre.nombre) m</td>
+                                            <td>
+                                                <a href="~/Ranking/Ver/@item.id" class="btn btn-sm btn-warning">Detalles</a>
+                                                <a href="~/Ranking/AgregarEditar/@item.id" class="btn btn-sm btn-primary">Modificar</a>
+                                                <a href="~/Ranking/Eliminar/@item.id" class="btn btn-sm btn-danger" onclick="return confirm('¿Esta seguro de eliminar el registro ...?')">Eliminar</a>
+                                            </td>
+                                        </tr>
+                                    }
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>

@@ -65,7 +65,7 @@ namespace Cuna_Mas_Web2.Models
             {
                 using (var db = new Model_CM())
                 {
-                    objTipo = db.Padre.Include("Madre").ToList();
+                    objTipo = db.Padre.Include("Madre").Include("Usuario").Include("Reunion").ToList();
                 }
             }
             catch (Exception)

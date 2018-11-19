@@ -1,4 +1,4 @@
-﻿@model List<Cuna_Mas_Web2.Models.Madre>
+﻿@model List<Cuna_Mas_Web2.Models.DatosMedicos>
 @{
     ViewBag.Title = "Tabla";
 }
@@ -6,7 +6,7 @@
 <div class="breadcrumb-holder container-fluid">
     <ul class="breadcrumb">
         <li class="breadcrumb-item"><a href="index.html">Inicio</a></li>
-        <li class="breadcrumb-item"><a href="~/Madre/AgregarEditar/">Agregar nuevo</a></li>
+        <li class="breadcrumb-item"><a href="~/DatosMedicos/AgregarEditar/">Agregar nuevo</a></li>
         <li class="breadcrumb-item active">Tablas</li>
     </ul>
 </div>
@@ -16,7 +16,7 @@
             <div class="">
                 <div class="card">
                     <div class="card-header d-flex align-items-center">
-                        <h3 class="h4">Madre</h3>
+                        <h3 class="h4">Datos Medicos</h3>
                     </div>
                     <div class="card-body">
                         <div class="table-responsive">
@@ -24,26 +24,27 @@
                                 <thead>
                                     <tr>
                                         <th>#</th>
-                                        <th>Nombre</th>
-                                        <th>Apellido</th>
-                                        <th>Comite</th>
-                                        <th>Estado</th>
+                                        <th>Dato Medico</th>
+                                        <th>Altura</th>
+                                        <th>Peso</th>
+                                        <th>Fecha</th>
                                         <th>Acciones</th>
                                     </tr>
                                 </thead>
                                 <tbody>
                                     @foreach (var item in Model)
                                     {
+                                        string fecha = String.Format("{0:dd/MM/yyyy}", item.fecha_revision);
                                     <tr>
                                         <th scope="row">@(item.id)</th>
                                         <td>@(item.nombre)</td>
-                                        <td>@(item.apellido)</td>
-                                        <td>@(item.comite)</td>
-                                        <td>@(item.estado)</td>
+                                        <td>@(item.altura) m</td>
+                                        <td>@(item.peso) Kg</td>
+                                        <td>@(fecha)</td>
                                         <td>
-                                            <a href="~/Madre/Ver/@item.id" class="btn btn-sm btn-warning">Detalles</a>
-                                            <a href="~/Madre/AgregarEditar/@item.id" class="btn btn-sm btn-primary">Modificar</a>
-                                            <a href="~/Madre/Eliminar/@item.id" class="btn btn-sm btn-danger" onclick="return confirm('¿Esta seguro de eliminar el registro ...?')">Eliminar</a>
+                                            <a href="~/DatosMedicos/Ver/@item.id" class="btn btn-sm btn-warning">Detalles</a>
+                                            <a href="~/DatosMedicos/AgregarEditar/@item.id" class="btn btn-sm btn-primary">Modificar</a>
+                                            <a href="~/DatosMedicos/Eliminar/@item.id" class="btn btn-sm btn-danger" onclick="return confirm('¿Esta seguro de eliminar el registro ...?')">Eliminar</a>
                                         </td>
                                     </tr>
                                     }

@@ -1,0 +1,35 @@
+﻿@model Cuna_Mas_Web2.Models.Ninio
+@{
+    ViewBag.Title = "Ver";
+    string fecha = String.Format("{0:dd/MM/yyyy}", Model.fecha_nacimiento);
+}
+
+<br />
+<nav aria-label="breadcrumb">
+    <ol class="breadcrumb">
+        <li class="breadcrumb-item" style="padding-left:10px"><a href="~/Ninio/Index">Lista Niño</a></li>
+        <li class="breadcrumb-item active">@Model.nombre</li>
+    </ol>
+</nav>
+<br />
+<div class="container">
+    <div class="row">
+        <div class="card col-md" style="margin: 0.2em 0.2em; padding-top:1em;">
+            <div class="card-body">
+                <h3>Datos del Niño</h3>
+                <p class="card-title"><b>Nombres y Apellido: </b>@Model.nombre</p>
+                <p class="card-text"><b>Fecha: </b>@fecha</p>
+                <p class="card-text"><b>Estado: </b>@Model.estado</p>
+            </div>
+        </div>
+        <div class="card col-md" style="margin: 0.2em 0.2em; padding-top:1em;">
+            <div class="card-body">
+                <h3>Datos de comite</h3>
+                <p class="card-text"><b>Nombre de la Cuidadora: </b>@Model.Madre.nombre</p>
+                <p class="card-text"><b>Nombre del Padre: </b>@Model.Padre.apoderado</p>
+                <p class="card-text"><b>Metodo de Aprendizaje: </b>@Model.MetodoAprendizaje.nombre</p>
+            </div>
+        </div>
+    </div>
+</div>
+<br />

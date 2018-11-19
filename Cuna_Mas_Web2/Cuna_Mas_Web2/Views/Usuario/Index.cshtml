@@ -1,0 +1,58 @@
+﻿@model List<Cuna_Mas_Web2.Models.Usuario>
+@{
+    ViewBag.Title = "Tabla";
+}
+<br />
+<div class="breadcrumb-holder container-fluid">
+    <ul class="breadcrumb">
+        <li class="breadcrumb-item"><a href="index.html">Inicio</a></li>
+        <li class="breadcrumb-item"><a href="~/Usuario/AgregarEditar/">Agregar nuevo</a></li>
+        <li class="breadcrumb-item active">Tablas</li>
+    </ul>
+</div>
+<section class="tables">
+    <div class="container-fluid">
+        <div class="">
+            <div class="">
+                <div class="card">
+                    <div class="card-header d-flex align-items-center">
+                        <h3 class="h4">Datos Medicos</h3>
+                    </div>
+                    <div class="card-body">
+                        <div class="table-responsive">
+                            <table class="table">
+                                <thead>
+                                    <tr>
+                                        <th>#</th>
+                                        <th>Dato Medico</th>
+                                        <th>Altura</th>
+                                        <th>Peso</th>
+                                        <th>Fecha</th>
+                                        <th>Acciones</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    @foreach (var item in Model)
+                                    {
+                                        <tr>
+                                            <th scope="row">@(item.id)</th>
+                                            <td>@(item.nombre)</td>
+                                            <td>@(item.altura) m</td>
+                                            <td>@(item.peso) Kg</td>
+                                            <td>@(fecha)</td>
+                                            <td>
+                                                <a href="~/Usuario/Ver/@item.id" class="btn btn-sm btn-warning">Detalles</a>
+                                                <a href="~/Usuario/AgregarEditar/@item.id" class="btn btn-sm btn-primary">Modificar</a>
+                                                <a href="~/Usuario/Eliminar/@item.id" class="btn btn-sm btn-danger" onclick="return confirm('¿Esta seguro de eliminar el registro ...?')">Eliminar</a>
+                                            </td>
+                                        </tr>
+                                    }
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
