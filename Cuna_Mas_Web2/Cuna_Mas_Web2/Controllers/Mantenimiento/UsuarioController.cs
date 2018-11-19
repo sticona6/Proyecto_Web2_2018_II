@@ -15,7 +15,7 @@ namespace Cuna_Mas_Web2.Controllers.Mantenimiento
         // GET: Usuario
         public ActionResult Index()
         {
-            return View();
+            return View(usuario.Listar());
         }
 
         public ActionResult Ver(int id)

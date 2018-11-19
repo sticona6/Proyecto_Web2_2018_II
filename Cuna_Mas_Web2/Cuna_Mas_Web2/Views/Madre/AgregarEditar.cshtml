@@ -1,0 +1,100 @@
+﻿@model Cuna_Mas_Web2.Models.Madre
+@{
+    ViewBag.Title = "Mantenimiento Madre";
+
+    List<Cuna_Mas_Web2.Models.Usuario> usuario = ViewBag.usuario;
+}
+<br />
+<div id="Padre">
+    <nav aria-label="breadcrumb">
+        <h2 class="text-center">Mantenimiento de tabla Madre</h2>
+        <div>
+            <ol class="breadcrumb">
+                <li class="breadcrumb-item" style="padding-left:0.5em;"><a href="~/Tablas/TablaPadres">Lista de Madre</a></li>
+                <li class="breadcrumb-item active">
+                    @(Model.id > 0 ? Model.nombre : "Nuevo Registro")
+                </li>
+            </ol>
+        </div>
+    </nav>
+    <br />
+    @using (Html.BeginForm("Guardar", "Madre", FormMethod.Post, new { @id = "frm-persona" }))
+    {
+        @Html.HiddenFor(x => x.id)
+        <div class="panel panel-default">
+            <div class="panel-heading"></div>
+            <div class="panel-body">
+                <div class="form-row">
+                    <div class="form-group col-md-4">
+                        @Html.Label("Id:")
+                        @Html.TextBoxFor(x => x.id, new { @class = "form-control", disabled = true })
+                    </div>
+                    <div class="form-group col-md-4">
+                        @Html.Label("Nombre:")
+                        @Html.TextBoxFor(x => x.nombre, new { @class = "form-control" })
+                        @Html.ValidationMessageFor(x => x.nombre, null, new { @class = "label label-danger" })
+                    </div>
+                    <div class="form-group col-md-4">
+                        @Html.Label("Apellido:")
+                        @Html.TextBoxFor(x => x.apellido, new {@class = "form-control"})
+                        @Html.ValidationMessageFor(x => x.apellido, null, new { @class = "label label-danger" })
+                    </div>
+                </div>
+                <div class="form-row">
+                    <div class="form-group col-md-6">
+                        @Html.Label("Edad:")
+                        @Html.TextBoxFor(x => x.edad, new { @class = "form-control" })
+                        @Html.ValidationMessageFor(x => x.edad, null, new { @class = "label label-danger" })
+                    </div>
+                    <div class="form-group col-md-6">
+                        @Html.Label("Horas laborales:")
+                        @Html.TextBoxFor(x => x.horas, new { @class = "form-control" })
+                        @Html.ValidationMessageFor(x => x.horas, null, new { @class = "label label-danger" })
+                    </div>
+                </div>
+                <div class="form-row">
+                    <div class="form-group col-md-6">
+                        @Html.Label("Observaciones:")
+                        @Html.TextBoxFor(x => x.obserbaciones, new { @class = "form-control", @placeholder = "Nombre de apoderado" })
+                        @Html.ValidationMessageFor(x => x.obserbaciones, null, new { @class = "label label-danger" })
+                    </div>
+                    <div class="form-group col-md-6">
+                        @Html.Label("Comite:")
+                        @Html.TextBoxFor(x => x.comite, new { @class = "form-control", @placeholder = "011 51 1 1234567" })
+                        @Html.ValidationMessageFor(x => x.comite, null, new { @class = "label label-danger" })
+                    </div>
+                </div>
+                <div class="form-row">
+                    <div class="form-group col-md-4">
+                        @Html.Label("Usuario")
+                        <select name="fk_id_usuario" class="form-control">
+                            <option @(Model.fk_id_usuario.Equals("") ? "selected" : "") value="">Seleccione</option>
+                            @foreach (var item in usuario)
+                            {
+                                <option @(Model.fk_id_usuario.Equals(item.id) ? "selected" : "")
+                                        value="@item.id">
+                                    @item.usuario1
+                                </option>
+                            }
+                        </select>
+                        @Html.ValidationMessageFor(x => x.fk_id_usuario, null, new { @class = "label label-danger" })
+                    </div>
+                    <div class="form-group col-md-4">
+                        @Html.Label("Estado:")
+                        <select name="estado" class="form-control">
+                            <option @(Model.estado == "" ? "selected" : "") value="">Seleccione</option>
+                            <option @(Model.estado == "A" ? "selected" : "") value="A">Activo</option>
+                            <option @(Model.estado == "I" ? "selected" : "") value="I">Inactivo</option>
+                        </select>
+                        @Html.ValidationMessageFor(x => x.estado, null, new { @class = "label label-danger" })
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="text-right">
+            <button type="submit" class="btn btn-primary">GRABAR</button>
+            <a href="~/Tablas/TablaPadres" class="btn btn-danger">CANCELAR</a>
+        </div>
+    }
+    <br />
+</div>

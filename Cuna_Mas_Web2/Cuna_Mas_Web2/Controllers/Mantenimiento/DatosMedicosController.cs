@@ -16,42 +16,42 @@ namespace Cuna_Mas_Web2.Controllers.Mantenimiento
         // GET: DatosMedicos
         public ActionResult Index()
         {
-            return View();
+            return View(datosmedicos.Listar());
         }
 
         public ActionResult Ver(int id)
         {
-            return View(ninio.Obtener(id));
+            return View(datosmedicos.Obtener(id));
         }
 
         public ActionResult AgregarEditar(int id = 0)
         {
-            ViewBag.madre = ninio.Listar();
+            ViewBag.ninio = ninio.Listar();
 
             return View(
-                id == 0 ? new Ninio() //agregar un nuevo objeto
-                : ninio.Obtener(id)
+                id == 0 ? new DatosMedicos() //agregar un nuevo objeto
+                : datosmedicos.Obtener(id)
                 );
         }
 
-        public ActionResult Guardar(Reunion reunion)
+        public ActionResult Guardar(DatosMedicos datosmedicos)
         {
             if (ModelState.IsValid)
             {
-                reunion.Guardar();
-                return Redirect("~/Ninio");
+                datosmedicos.Guardar();
+                return Redirect("~/DatosMedicos");
             }
             else
             {
-                return View("~/Views/Ninio/AgregarEditar.cshtml", ninio);
+                return View("~/Views/DatosMedicos/AgregarEditar.cshtml", datosmedicos);
             }
         }
 
         public ActionResult Eliminar(int id)
         {
-            ninio.id = id;
-            ninio.Eliminar();
-            return Redirect("~/Ninio");
+            datosmedicos.id = id;
+            datosmedicos.Eliminar();
+            return Redirect("~/DatosMedicos");
         }
     }
 }

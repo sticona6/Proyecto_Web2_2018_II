@@ -18,19 +18,19 @@ namespace Cuna_Mas_Web2.Controllers.Mantenimiento
         // GET: Padre
         public ActionResult Index()
         {
-            return View();
+            return View(padre.Listar());
         }
 
         public ActionResult Ver(int id)
         {
-            return View(reunion.Obtener(id));
+            return View(padre.Obtener(id));
         }
 
         public ActionResult AgregarEditar(int id = 0)
         {
             ViewBag.madre = madre.Listar();
-            ViewBag.padre = madre.Listar();
-            ViewBag.reunion = madre.Listar();
+            ViewBag.usuario = usuario.Listar();
+            ViewBag.reunion = reunion.Listar();
             return View(
                 id == 0 ? new Padre() //agregar un nuevo objeto
                 : padre.Obtener(id)
@@ -46,7 +46,7 @@ namespace Cuna_Mas_Web2.Controllers.Mantenimiento
             }
             else
             {
-                return View("~/Views/Padre/AgregarEditar.cshtml", reunion);
+                return View("~/Views/Padre/AgregarEditar.cshtml", padre);
             }
         }
 

@@ -601,6 +601,23 @@
     <None Include="packages.config" />
     <Content Include="Views\_ViewStart.cshtml" />
     <Content Include="Views\Madre\Index.cshtml" />
+    <Content Include="Views\DatosMedicos\Index.cshtml" />
+    <Content Include="Views\DatosMedicos\Ver.cshtml" />
+    <Content Include="Views\DatosMedicos\AgregarEditar.cshtml" />
+    <Content Include="Views\Madre\Ver.cshtml" />
+    <Content Include="Views\Madre\AgregarEditar.cshtml" />
+    <Content Include="Views\Ninio\Index.cshtml" />
+    <Content Include="Views\Ninio\Ver.cshtml" />
+    <Content Include="Views\Ninio\AgregarEditar.cshtml" />
+    <Content Include="Views\Padre\Index.cshtml" />
+    <Content Include="Views\Padre\Ver.cshtml" />
+    <Content Include="Views\Padre\AgregarEditar.cshtml" />
+    <Content Include="Views\Ranking\Index.cshtml" />
+    <Content Include="Views\Ranking\Ver.cshtml" />
+    <Content Include="Views\Ranking\AgregarEditar.cshtml" />
+    <Content Include="Views\Usuario\Index.cshtml" />
+    <Content Include="Views\Usuario\Ver.cshtml" />
+    <Content Include="Views\Usuario\AgregarEditar.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
@@ -621,7 +638,6 @@
     <Folder Include="Views\Madre_Guia\" />
     <Folder Include="Views\Mantenimiento\" />
     <Folder Include="Views\MetodoAprendizaje\" />
-    <Folder Include="Views\Ninio\" />
     <Folder Include="Views\Visualizar\" />
   </ItemGroup>
   <PropertyGroup>
