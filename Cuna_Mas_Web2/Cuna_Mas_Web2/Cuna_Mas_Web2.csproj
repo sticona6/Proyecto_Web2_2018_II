@@ -543,10 +543,6 @@
     <Content Include="Assets\vendor\popper.js\umd\popper.min.js" />
     <Content Include="Global.asax" />
     <Content Include="Views\Login\Index.cshtml" />
-    <Content Include="Views\Metodo\AgregarEditar.cshtml" />
-    <Content Include="Views\Metodo\Index.cshtml" />
-    <Content Include="Views\Metodo\Ver.cshtml" />
-    <Content Include="Views\Observacion\AgregarEditar.cshtml" />
     <Content Include="Views\Observacion\Ver.cshtml" />
     <Content Include="Views\Racion\Ver.cshtml" />
     <Content Include="Views\Reunion\AgregarEditar.cshtml" />
@@ -567,7 +563,6 @@
     <Compile Include="Controllers\Mantenimiento\DatosQRController.cs" />
     <Compile Include="Controllers\Mantenimiento\MadreController.cs" />
     <Compile Include="Controllers\Mantenimiento\MetodoAprendizajeController.cs" />
-    <Compile Include="Controllers\Mantenimiento\MetodoController.cs" />
     <Compile Include="Controllers\Mantenimiento\ObservacionController.cs" />
     <Compile Include="Controllers\Mantenimiento\PadreController.cs" />
     <Compile Include="Controllers\Mantenimiento\QRController.cs" />
@@ -607,6 +602,12 @@
     <Content Include="Views\DatosQR\Index.cshtml" />
     <Content Include="Views\Default\Index.cshtml" />
     <Content Include="Views\DatosQR\AgregarEditar.cshtml" />
+    <Content Include="Views\MetodoAprendizaje\Index.cshtml" />
+    <Content Include="Views\MetodoAprendizaje\Ver.cshtml" />
+    <Content Include="Views\MetodoAprendizaje\AgregarEditar.cshtml" />
+    <Content Include="Views\Observacion\Index.cshtml" />
+    <Content Include="Views\Observacion\AgregarEditar.cshtml" />
+    <Content Include="Views\Racion\Index.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
@@ -625,7 +626,6 @@
     <Folder Include="Views\Madre_Familia\" />
     <Folder Include="Views\Madre_Guia\" />
     <Folder Include="Views\Mantenimiento\" />
-    <Folder Include="Views\MetodoAprendizaje\" />
     <Folder Include="Views\Ninio\" />
     <Folder Include="Views\Visualizar\" />
   </ItemGroup>

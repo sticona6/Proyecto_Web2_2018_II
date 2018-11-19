@@ -22,6 +22,7 @@ namespace Cuna_Mas_Web2.Models
         [Required]
         public string descripcion { get; set; }
 
+        [Required]
         [Column(TypeName = "date")]
         public DateTime fecha { get; set; }
 

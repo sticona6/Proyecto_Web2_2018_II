@@ -1,4 +1,4 @@
-@model Cuna_Mas_Web2.Models.Observacion
+﻿@model Cuna_Mas_Web2.Models.Observacion
 @{
     ViewBag.Title = "Mantenimiento Observación";
 
@@ -10,9 +10,9 @@
     <h2 class="text-center">Mantenimiento de tabla observación</h2>
     <div>
         <ol class="breadcrumb">
-            <li class="breadcrumb-item" style="padding-left:0.5em;"><a href="~/Tablas/TablaObservacion">Lista de Observaciones</a></li>
+            <li class="breadcrumb-item" style="padding-left:0.5em;"><a href="~/Observacion/Index">Lista de Observaciones</a></li>
             <li class="breadcrumb-item active">
-                @(Model.id > 0 ? Model.descripcion : "Nuevo Observación")
+                @(Model.id > 0 ? Model.titulo : "Nuevo Observación")
             </li>
         </ol>
     </div>
@@ -27,6 +27,12 @@
             <div class="form-group">
                 @Html.Label("Id:")
                 @Html.TextBoxFor(x => x.id, new { @class = "form-control", disabled = true })
+            </div>
+
+            <div class="form-group">
+                @Html.Label("Titulo:")
+                @Html.TextBoxFor(x => x.titulo, new { @class = "form-control" })
+                @Html.ValidationMessageFor(x => x.titulo, null, new { @class = "label label-danger" })
             </div>
 
             <div class="form-group">
@@ -61,7 +67,7 @@
     </div>
     <div class="text-right">
         <button type="submit" class="btn btn-primary">GRABAR</button>
-        <a href="~/Tablas/TablaObservacion" class="btn btn-danger">CANCELAR</a>
+        <a href="~/Observacion/Index" class="btn btn-danger">CANCELAR</a>
     </div>
 }
 <br />

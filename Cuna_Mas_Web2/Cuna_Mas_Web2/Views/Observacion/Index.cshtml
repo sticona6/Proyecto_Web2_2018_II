@@ -1,13 +1,13 @@
-@model List<Cuna_Mas_Web2.Models.MetodoAprendizaje>
+﻿@model List<Cuna_Mas_Web2.Models.Observacion>
 @{
-    ViewBag.Title = "Metodo de Aprendizaje";
+    ViewBag.Title = "Observacion";
 }
 <!-- Page Header-->
 <br />
 <!-- Breadcrumb-->
 <div class="breadcrumb-holder container-fluid">
     <ul class="breadcrumb">
-        <li class="breadcrumb-item"><a href="~/Metodo/AgregarEditar/">Agregar nuevo</a></li>
+        <li class="breadcrumb-item"><a href="~/Observacion/AgregarEditar/">Agregar nuevo</a></li>
         <li class="breadcrumb-item active">Tablas</li>
     </ul>
 </div>
@@ -17,7 +17,7 @@
             <div class="">
                 <div class="card">
                     <div class="card-header d-flex align-items-center">
-                        <h3 class="h4">Metodos de Aprendizaje</h3>
+                        <h3 class="h4">Observación</h3>
                     </div>
                     <div class="card-body">
                         <div class="table-responsive">
@@ -25,8 +25,10 @@
                                 <thead>
                                     <tr>
                                         <th>#</th>
+                                        <th>Título</th>
                                         <th>Descripción</th>
-                                        <th>Rango de edades</th>
+                                        <th>Fecha</th>
+                                        <th>Madre</th>
                                         <th>Acciones</th>
                                     </tr>
                                 </thead>
@@ -35,12 +37,14 @@
                                     {
                                         <tr>
                                             <th scope="row">@(item.id)</th>
+                                            <td>@(item.titulo)</td>
                                             <td>@(item.descripcion)</td>
-                                            <td>@(item.rango_edad)</td>
+                                            <td>@(item.fecha)</td>
+                                            <td>@(item.Madre.nombre + " " + item.Madre.apellido)</td>
                                             <td>
-                                                <a href="~/Metodo/Ver/@item.id" class="btn btn-sm btn-warning">Detalles</a>
-                                                <a href="~/Metodo/AgregarEditar/@item.id" class="btn btn-sm btn-primary">Modificar</a>
-                                                <a href="~/Metodo/Eliminar/@item.id" class="btn btn-sm btn-danger" onclick="return confirm('¿Esta seguro de eliminar el registro ...?')">Eliminar</a>
+                                                <a href="~/Observacion/Ver/@item.id" class="btn btn-sm btn-warning">Detalles</a>
+                                                <a href="~/Observacion/AgregarEditar/@item.id" class="btn btn-sm btn-primary">Modificar</a>
+                                                <a href="~/Observacion/Eliminar/@item.id" class="btn btn-sm btn-danger" onclick="return confirm('¿Esta seguro de eliminar el registro ...?')">Eliminar</a>
                                             </td>
                                         </tr>
                                     }
