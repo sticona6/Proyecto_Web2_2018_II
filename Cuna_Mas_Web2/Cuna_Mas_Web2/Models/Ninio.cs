@@ -55,12 +55,36 @@ namespace Cuna_Mas_Web2.Models
             var objTipo = new List<Ninio>();
             try
             {
+                Usuario usu = new Usuario().Obtener(SessionHelper.GetUser());
+
                 using (var db = new Model_CM())
                 {
-                    objTipo = db.Ninio.Include("Madre")
-                                      .Include("Padre")
-                                      .Include("MetodoAprendizaje")
-                                      .ToList();
+                    if (usu.tipo.Contains("Cuidadora"))
+                    {
+                        Madre cuidadora = new Madre().ObtenerMamaUsuario(usu.id);
+                        objTipo = db.Ninio.Include("Madre")
+                                              .Include("Padre")
+                                              .Include("MetodoAprendizaje")
+                                              .Where(x=>x.fk_id_cuidadora == cuidadora.id)
+                                              .ToList();
+                    }
+                    else if(usu.tipo.Contains("Padre"))
+                    {
+                        Padre papa = new Padre().ObtenerPapa(usu.id);
+                        objTipo = db.Ninio.Include("Madre")
+                                              .Include("Padre")
+                                              .Include("MetodoAprendizaje")
+                                              .Where(x => x.fk_id_padre == papa.id)
+                                              .ToList();
+                        
+                    }
+                    else
+                    {
+                        objTipo = db.Ninio.Include("Madre")
+                                              .Include("Padre")
+                                              .Include("MetodoAprendizaje")
+                                              .ToList();
+                    }
                 }
             }
             catch (Exception)
