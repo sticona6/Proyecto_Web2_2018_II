@@ -29,7 +29,6 @@ namespace Cuna_Mas_Web2.Controllers.Mantenimiento
                     : reunion.Obtener(id)
             );
         }
-
         public ActionResult Guardar(Reunion reunion)
         {
             if (ModelState.IsValid)
@@ -42,7 +41,6 @@ namespace Cuna_Mas_Web2.Controllers.Mantenimiento
                 return View("~/Views/Reunion/AgregarEditar.cshtml", reunion);
             }
         }
-
         public ActionResult Eliminar(int id)
         {
             reunion.id = id;

@@ -4,83 +4,104 @@
 
     List<Cuna_Mas_Web2.Models.Ninio> ninio = ViewBag.ninio;
 }
-<br />
-<div id="Padre">
-    <nav aria-label="breadcrumb">
-        <h2 class="text-center">Mantenimiento de Datos Medicos</h2>
-        <div>
-            <ol class="breadcrumb">
-                <li class="breadcrumb-item" style="padding-left:0.5em;"><a href="~/DatosMedicos/Index">Lista de Datos Medicos</a></li>
-                <li class="breadcrumb-item active">
-                    @(Model.id > 0 ? Model.nombre : "Nuevo Registro")
-                </li>
-            </ol>
-        </div>
-    </nav>
-    <br />
-    @using (Html.BeginForm("Guardar", "DatosMedicos", FormMethod.Post, new { @id = "frm-persona" }))
-    {
-        @Html.HiddenFor(x => x.id)
-        <div class="panel panel-default">
-            <div class="panel-heading"></div>
-            <div class="panel-body">
-                <div class="form-row">
-                    <div class="form-group col-md-4">
-                        @Html.Label("Id:")
-                        @Html.TextBoxFor(x => x.id, new { @class = "form-control", disabled = true })
+<header class="page-header">
+    <div class="container-fluid">
+        <h2 class="no-margin-bottom">Mantenimiento de Datos Medicos</h2>
+    </div>
+</header>
+<div class="breadcrumb-holder container-fluid">
+    <ul class="breadcrumb">
+        <li class="breadcrumb-item"><a href="~/DatosMedicos/Index">Lista de Datos Medicos</a></li>
+        <li class="breadcrumb-item active"> @(Model.id > 0 ? Model.nombre : "Nuevo Registro")</li>
+    </ul>
+</div>
+@using (Html.BeginForm("Guardar", "DatosMedicos", FormMethod.Post, new { @id = "frm-persona" }))
+{
+<section class="forms">
+    <div class="container-fluid">
+        <div class="row">
+            @Html.HiddenFor(x => x.id)
+            <div class="col-lg-12">
+                <div class="card">
+                    <div class="card-close">
+                        <div class="dropdown">
+                            <button type="button" id="closeCard5" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" class="dropdown-toggle"><i class="fa fa-ellipsis-v"></i></button>
+                            <div aria-labelledby="closeCard5" class="dropdown-menu dropdown-menu-right has-shadow"><a href="#" class="dropdown-item remove"> <i class="fa fa-times"></i>Close</a><a href="#" class="dropdown-item edit"> <i class="fa fa-gear"></i>Edit</a></div>
+                        </div>
                     </div>
-                    <div class="form-group col-md-4">
-                        @Html.Label("Nombre:")
-                        @Html.TextBoxFor(x => x.nombre, new { @class = "form-control" })
-                        @Html.ValidationMessageFor(x => x.nombre, null, new { @class = "label label-danger" })
+                    <div class="card-header d-flex align-items-center">
+                        <h3 class="h4">Datos Medicos</h3>
                     </div>
-                </div>
-                <div class="form-row">
-                    <div class="form-group col-md-6">
-                        @Html.Label("Altura:")
-                        @Html.TextBoxFor(x => x.altura, new { @class = "form-control", @placeholder = " Altura del Niño" })
-                        @Html.ValidationMessageFor(x => x.altura, null, new { @class = "label label-danger" })
-                    </div>
-                    <div class="form-group col-md-6">
-                        @Html.Label("Peso:")
-                        @Html.TextBoxFor(x => x.peso, new { @class = "form-control", @placeholder = "Peso del Niño" })
-                        @Html.ValidationMessageFor(x => x.peso, null, new { @class = "label label-danger" })
-                    </div>
-                </div>
-                <div class="form-row">
-                    <div class="form-group col-md-6">
-                        @Html.Label("Indice:")
-                        @Html.TextBoxFor(x => x.indice_nutricion, new { @class = "form-control", @placeholder = "Indice de Nutrición" })
-                        @Html.ValidationMessageFor(x => x.indice_nutricion, null, new { @class = "label label-danger" })
-                    </div>
-                    <div class="form-group col-md-6">
-                        @Html.Label("Fecha:")
-                        @Html.TextBoxFor(x => x.fecha_revision, new { @class = "form-control", @placeholder = "011 51 1 1234567" })
-                        @Html.ValidationMessageFor(x => x.fecha_revision, null, new { @class = "label label-danger" })
-                    </div>
-                </div>
-                <div class="form-row">
-                    <div class="form-group col-md-4">
-                        @Html.Label("Niño")
-                        <select name="fk_id_ninio" class="form-control">
-                            <option @(Model.fk_id_ninio.Equals("") ? "selected" : "") value="">Seleccione</option>
-                            @foreach (var item in ninio)
-                            {
-                                <option @(Model.fk_id_ninio.Equals(item.id) ? "selected" : "")
-                                        value="@item.id">
-                                    @item.nombre
-                                </option>
-                            }
-                        </select>
-                        @Html.ValidationMessageFor(x => x.fk_id_ninio, null, new { @class = "label label-danger" })
+                    <div class="card-body">
+                        <form class="form-horizontal">
+                            <div class="form-group row">
+                                <label class="col-sm-3 form-control-label">Identificador</label>
+                                <div class="col-sm-9">
+                                    @Html.TextBoxFor(x => x.id, new { @class = "form-control", disabled = true })
+                                </div>
+                            </div>
+                            <div class="form-group row">
+                                <label class="col-sm-3 form-control-label">Nombre</label>
+                                <div class="col-sm-9">
+                                    @Html.TextBoxFor(x => x.nombre, new { @class = "form-control" })
+                                    @Html.ValidationMessageFor(x => x.nombre, null, new { @class = "label label-danger" })
+                                </div>
+                            </div>
+                            <div class="form-group row">
+                                <label class="col-sm-3 form-control-label">Altura</label>
+                                <div class="col-sm-9">
+                                    @Html.TextBoxFor(x => x.altura, new { @class = "form-control", @placeholder = " Altura del Niño" })
+                                    @Html.ValidationMessageFor(x => x.altura, null, new { @class = "label label-danger" })
+                                </div>
+                            </div>
+                            <div class="form-group row">
+                                <label class="col-sm-3 form-control-label">Peso</label>
+                                <div class="col-sm-9">
+                                    @Html.TextBoxFor(x => x.peso, new { @class = "form-control", @placeholder = "Peso del Niño" })
+                                    @Html.ValidationMessageFor(x => x.peso, null, new { @class = "label label-danger" })
+                                </div>
+                            </div>
+                            <div class="form-group row">
+                                <label class="col-sm-3 form-control-label">Indice</label>
+                                <div class="col-sm-9">
+                                    @Html.TextBoxFor(x => x.indice_nutricion, new { @class = "form-control", @placeholder = "Indice de Nutrición" })
+                                    @Html.ValidationMessageFor(x => x.indice_nutricion, null, new { @class = "label label-danger" })
+                                </div>
+                            </div>
+                            <div class="form-group row">
+                                <label class="col-sm-3 form-control-label">Fecha</label>
+                                <div class="col-sm-9">
+                                    @Html.TextBoxFor(x => x.fecha_revision, new { @class = "form-control", @placeholder = "011 51 1 1234567" })
+                                    @Html.ValidationMessageFor(x => x.fecha_revision, null, new { @class = "label label-danger" })
+                                </div>
+                            </div>
+                            <div class="form-group row">
+                                <label class="col-sm-3 form-control-label">Niño</label>
+                                <div class="col-sm-9">
+                                    <select name="fk_id_ninio" class="form-control">
+                                        <option @(Model.fk_id_ninio.Equals("") ? "selected" : "") value="">Seleccione</option>
+                                        @foreach (var item in ninio)
+                                        {
+                                            <option @(Model.fk_id_ninio.Equals(item.id) ? "selected" : "")
+                                                    value="@item.id">
+                                                @item.nombre
+                                            </option>
+                                        }
+                                    </select>
+                                    @Html.ValidationMessageFor(x => x.fk_id_ninio, null, new { @class = "label label-danger" })
+                                </div>
+                            </div>
+                            <div class="form-group row">
+                                <div class="col-sm-4 offset-sm-3">
+                                    <button type="submit" class="btn btn-primary">GRABAR</button>
+                                    <a href="~/DatosMedicos/Index" class="btn btn-secondary">CANCELAR</a>
+                                </div>
+                            </div>
+                        </form>
                     </div>
                 </div>
             </div>
         </div>
-        <div class="text-right">
-            <button type="submit" class="btn btn-primary">GRABAR</button>
-            <a href="~/DatosMedicos/Index" class="btn btn-danger">CANCELAR</a>
-        </div>
-    }
-    <br />
-</div>
+    </div>
+</section>
+}

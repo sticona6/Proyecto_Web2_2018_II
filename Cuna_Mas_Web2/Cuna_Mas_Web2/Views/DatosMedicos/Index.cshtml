@@ -2,11 +2,14 @@
 @{
     ViewBag.Title = "Tabla";
 }
-<br />
+<header class="page-header">
+    <div class="container-fluid">
+        <h2 class="no-margin-bottom">Tabla de Datos Medicos</h2>
+    </div>
+</header>
 <div class="breadcrumb-holder container-fluid">
     <ul class="breadcrumb">
-        <li class="breadcrumb-item"><a href="index.html">Inicio</a></li>
-        <li class="breadcrumb-item"><a href="~/DatosMedicos/AgregarEditar/">Agregar nuevo</a></li>
+        <li class="breadcrumb-item"><a href="~/DatosMedicos/AgregarEditar/">Agregar Nuevo</a></li>
         <li class="breadcrumb-item active">Tablas</li>
     </ul>
 </div>
@@ -35,18 +38,18 @@
                                     @foreach (var item in Model)
                                     {
                                         string fecha = String.Format("{0:dd/MM/yyyy}", item.fecha_revision);
-                                    <tr>
-                                        <th scope="row">@(item.id)</th>
-                                        <td>@(item.nombre)</td>
-                                        <td>@(item.altura) m</td>
-                                        <td>@(item.peso) Kg</td>
-                                        <td>@(fecha)</td>
-                                        <td>
-                                            <a href="~/DatosMedicos/Ver/@item.id" class="btn btn-sm btn-warning">Detalles</a>
-                                            <a href="~/DatosMedicos/AgregarEditar/@item.id" class="btn btn-sm btn-primary">Modificar</a>
-                                            <a href="~/DatosMedicos/Eliminar/@item.id" class="btn btn-sm btn-danger" onclick="return confirm('¿Esta seguro de eliminar el registro ...?')">Eliminar</a>
-                                        </td>
-                                    </tr>
+                                        <tr>
+                                            <th scope="row">@(item.id)</th>
+                                            <td>@(item.nombre)</td>
+                                            <td>@(item.altura) m</td>
+                                            <td>@(item.peso) Kg</td>
+                                            <td>@(fecha)</td>
+                                            <td>
+                                                <a href="~/DatosMedicos/Ver/@item.id" class="btn btn-sm btn-warning">Detalles</a>
+                                                <a href="~/DatosMedicos/AgregarEditar/@item.id" class="btn btn-sm btn-primary">Modificar</a>
+                                                <a href="~/DatosMedicos/Eliminar/@item.id" class="btn btn-sm btn-danger" onclick="return confirm('¿Esta seguro de eliminar el registro ...?')">Eliminar</a>
+                                            </td>
+                                        </tr>
                                     }
                                 </tbody>
                             </table>
