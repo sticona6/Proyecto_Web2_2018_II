@@ -102,6 +102,26 @@ namespace Cuna_Mas_Web2.Models
             }
             return objTipo;
         }
+
+        public Madre ObtenerMamaUsuario(int id)
+        {
+            var objTipo = new Madre();
+            try
+            {
+                using (var db = new Model_CM())
+                {
+                    objTipo = db.Madre.Include("Usuario")
+                        .Where(x => x.fk_id_usuario == id)
+                        .SingleOrDefault();
+                }
+            }
+            catch (Exception)
+            {
+                throw;
+            }
+            return objTipo;
+        }
+
         public void Guardar()
         {
             try

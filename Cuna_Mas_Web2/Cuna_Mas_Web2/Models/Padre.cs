@@ -92,6 +92,26 @@ namespace Cuna_Mas_Web2.Models
             }
             return objTipo;
         }
+
+        public Padre ObtenerPapa(int id)
+        {
+            var objTipo = new Padre();
+            try
+            {
+                using (var db = new Model_CM())
+                {
+                    objTipo = db.Padre.Include("Madre")
+                        .Where(x => x.fk_id_usuario == id)
+                        .SingleOrDefault();
+                }
+            }
+            catch (Exception)
+            {
+                throw;
+            }
+            return objTipo;
+        }
+
         public void Guardar()
         {
             try

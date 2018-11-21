@@ -625,6 +625,9 @@
     <Content Include="Views\Usuario\Index.cshtml" />
     <Content Include="Views\Usuario\Ver.cshtml" />
     <Content Include="Views\Usuario\AgregarEditar.cshtml" />
+    <Content Include="Views\Visualizar\MadreJefa.cshtml" />
+    <Content Include="Views\Visualizar\_PartialRanking.cshtml" />
+    <Content Include="Views\Padre\_PartialAgregarRanking.cshtml" />
     <Content Include="Views\Madre_Guia\Index.cshtml" />
     <Content Include="Views\Madre_Familia\Index.cshtml" />
     <None Include="Web.Debug.config">

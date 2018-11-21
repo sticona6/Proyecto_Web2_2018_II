@@ -200,8 +200,8 @@
                 
                 <!-- Sidebar Navidation Menus--><span class="heading">Principal</span>
                 <ul class="list-unstyled">
-                    @if (usuario.tipo.Equals("Jefa")) {
-                        <li>@Html.ActionLink("Inicio", "Administrador", "Principal")</li>
+                    @if (usuario.tipo.Contains("Jefa")) {
+                        <li>@Html.ActionLink("Inicio", "MadreJefa", "Visualizar")</li>
                     }
                     else if (usuario.tipo.Equals("Madre Familia")) {
                         <li>@Html.ActionLink("Inicio", "Administrador", "Principal")</li>
@@ -209,27 +209,35 @@
                     else if (usuario.tipo.Equals("Madre Guia")) {
                         <li>@Html.ActionLink("Inicio", "Administrador", "Principal")</li>
                     }
-                    else if (usuario.tipo.Equals("Madre Cuidadora")) {
-                        <li>@Html.ActionLink("Inicio", "MadreCuidadora", "Principal")</li>
+                    else if (usuario.tipo.Contains("Cuidadora")) {
+                        <li>@Html.ActionLink("Inicio", "MadreCuidadora", "Visualizar")</li>
                     }
 
                     <li>
                         <a href="#exampledropdownDropdown" aria-expanded="false" data-toggle="collapse"> <i class="icon-interface-windows"></i>Tablas </a>
                         <ul id="exampledropdownDropdown" class="collapse list-unstyled ">
-                            <li>@Html.ActionLink("Padres", "TablaPadres", "Tablas")</li>
-                            <li>@Html.ActionLink("Reunión", "TablaReunion", "Tablas")</li>
-                            <li>@Html.ActionLink("Niños", "TablaNinios", "Tablas")</li>
-                            <li>@Html.ActionLink("Alimentación", "TablaAlimentacion", "Tablas")</li>
-                            <li>@Html.ActionLink("Observación", "Index", "Observacion")</li>
-                            <li>@Html.ActionLink("Metodo de Aprendizaje", "Index", "MetodoAprendizaje")</li>
-                            <li>@Html.ActionLink("Racìones", "Index", "Racion")</li>
-                            <li>@Html.ActionLink("QR", "Index", "QR")</li>
+                            @if (!usuario.tipo.Contains("Padre"))
+                            {
+                                <li>@Html.ActionLink("Padres", "Index", "Padre")</li>
+                            }
+                            <li>@Html.ActionLink("Niños", "Index", "Ninio")</li>
+
+                            @if (usuario.tipo.Contains("Madre"))
+                            {
+                                <li> @Html.ActionLink("Alimentación", "TablaAlimentacion", "Tablas") </li>
+                                <li> @Html.ActionLink("Observación", "Index", "Observacion") </li>
+                                <li> @Html.ActionLink("Metodo de Aprendizaje", "Index", "MetodoAprendizaje") </li>
+                                <li> @Html.ActionLink("Racíones", "Index", "Racion") </li>
+                                <li> @Html.ActionLink("QR", "Index", "QR") </li>
+                            }
+
                         </ul>
                     </li>
                     <li>@Html.ActionLink("Graficos", "Index", "Graficos")</li>
                 </ul>
             </nav>
-            
+
+
 
             <div class="content-inner">
                 <div class="container body-content">
