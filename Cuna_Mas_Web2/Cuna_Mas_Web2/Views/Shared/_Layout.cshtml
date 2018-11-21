@@ -3,6 +3,11 @@
     string controlador = ViewContext.RouteData.Values["controller"].ToString().ToLower();
 
     Cuna_Mas_Web2.Models.Usuario usuario = new Cuna_Mas_Web2.Models.Usuario().Obtener(Cuna_Mas_Web2.Models.SessionHelper.GetUser());
+    List<Cuna_Mas_Web2.Models.Madre> madre = new Cuna_Mas_Web2.Models.Madre().Listar();
+    List<Cuna_Mas_Web2.Models.Padre> padre = new Cuna_Mas_Web2.Models.Padre().Listar();
+
+    string name = "";
+    string h = "";
 }
 <!DOCTYPE html>
 <html>
@@ -149,7 +154,46 @@
                     <div id="Madre" class="sidebar-header d-flex align-items-center">
                         <div class="avatar"><img src="~/Uploads/@usuario.imagen" alt="..." class="img-fluid rounded-circle"></div>
                         <div class="title">
-                            <h1 class="h4">@(usuario.usuario1)</h1> <!-- Nombre -->
+                            @if (usuario.tipo.Equals("Padre Familia"))
+                            {
+                                foreach (var item in padre)
+                                {
+                                    if (item.fk_id_usuario.Equals(usuario.id))
+                                    {
+                                        name = item.apoderado;
+                                        char[] aName = name.ToCharArray();
+                                        if (aName.Count() > 10)
+                                        {
+                                            h = "h5";
+                                        }
+                                        else
+                                        {
+                                            h = "h3";
+                                        }
+                                    }
+                                }
+                                <h1 class="@h">@name</h1> <!-- Nombre -->
+                            }
+                            else
+                            {
+                                foreach (var item in madre)
+                                {
+                                    if (item.fk_id_usuario.Equals(usuario.id))
+                                    {
+                                        name = item.nombre + " " + item.apellido;
+                                        char[] aName = name.ToCharArray();
+                                        if (aName.Count() > 10)
+                                        {
+                                            h = "h5";
+                                        }
+                                        else
+                                        {
+                                            h = "h4";
+                                        }
+                                    }
+                                }
+                                <h1 class="@h">@name</h1> <!-- Nombre -->
+                        }
                             <p>@usuario.tipo</p><!-- Tipo -->
                         </div>
                     </div>
