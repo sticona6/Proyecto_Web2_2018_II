@@ -30,12 +30,21 @@ namespace Cuna_Mas_Web2.Controllers.Mantenimiento
                 : usuario.Obtener(id)
                 );
         }
-
-        public ActionResult Guardar(Usuario usuario)
+        [HttpPost]
+        public ActionResult Guardar(string imagen,HttpPostedFileBase foto, Usuario usuario)
         {
             if (ModelState.IsValid)
             {
-                usuario.Guardar();
+                var photoName = "";
+                photoName = imagen;
+                var fullPath = Server.MapPath(@"~/Uploads/" + photoName);
+
+                if (System.IO.File.Exists(fullPath))
+                {
+                    System.IO.File.Delete(fullPath);
+                }
+
+                usuario.Guardar(foto);
                 return Redirect("~/Usuario");
             }
             else

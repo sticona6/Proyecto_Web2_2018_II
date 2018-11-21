@@ -1,14 +1,13 @@
 ﻿@model Cuna_Mas_Web2.Models.Usuario
 @{
     ViewBag.Title = "Ver";
-    string fecha = String.Format("{0:dd/MM/yyyy}", Model.fecha_revision);
 }
 
 <br />
 <nav aria-label="breadcrumb">
     <ol class="breadcrumb">
-        <li class="breadcrumb-item" style="padding-left:10px"><a href="~/DatosMedicos/Index">Lista Datos Medicos</a></li>
-        <li class="breadcrumb-item active">@Model.nombre</li>
+        <li class="breadcrumb-item" style="padding-left:10px"><a href="~/Usuario/Index">Lista Usuario</a></li>
+        <li class="breadcrumb-item active">@Model.usuario1</li>
     </ol>
 </nav>
 <br />
@@ -16,11 +15,18 @@
     <div class="row">
         <div class="card col-md" style="margin: 0.2em 0.2em; padding-top:1em;">
             <div class="card-body">
-                <h3>Datos Medicos</h3>
-                <p class="card-title"><b>Nombre del niño: </b>@Model.Ninio.nombre</p>
-                <p class="card-title"><b>Altura: </b>@Model.altura</p>
-                <p class="card-text"><b>Peso: </b>@Model.peso</p>
-                <p class="card-text"><b>Fecha de la revisión: </b>@fecha</p>
+                <h3>Datos Usuario</h3>
+                <p class="card-title"><b>Nombre del Usuario: </b>@Model.usuario1</p>
+                
+            </div>
+        </div>
+        <div class="card col-md" style="margin: 0.2em 0.2em; padding-top:1em;">
+            <div class="card-body">
+                <h3>Datos Usuario</h3>
+                <p class="card-title"><b>Nombre del Usuario: </b>@Model.usuario1</p>
+                <p class="card-title"><b>Clave: </b>@Model.clave</p>
+                <p class="card-text"><b>Tipo: </b>@Model.tipo</p>
+                <p class="card-text"><b>Estado: </b>@Model.estado</p>
             </div>
         </div>
     </div>

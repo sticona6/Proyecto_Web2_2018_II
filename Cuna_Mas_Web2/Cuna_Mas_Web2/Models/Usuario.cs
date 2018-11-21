@@ -8,6 +8,9 @@ namespace Cuna_Mas_Web2.Models
     
     using System.Linq;
     using System.Data.Entity;
+    using System.Web;
+    using System.Data.Entity.Validation;
+    using System.IO;
 
     [Table("Usuario")]
     public partial class Usuario
@@ -122,7 +125,7 @@ namespace Cuna_Mas_Web2.Models
             }
             return objTipo;
         }
-        public void Guardar()
+        public void Guardar(HttpPostedFileBase Foto)
         {
             try
             {
@@ -130,11 +133,46 @@ namespace Cuna_Mas_Web2.Models
                 {
                     if (this.id > 0)
                     {
-                        db.Entry(this).State = EntityState.Modified;
+                        if (Foto != null)
+                        {
+                            const int size = 1024 * 1024 * 5;
+                            var filtroextension = new[] { ".jpg", ".jpeg", ".png", ".gif" };
+                            var extensiones = Path.GetExtension(Foto.FileName);
+
+                            if (filtroextension.Contains(extensiones) && (Foto.ContentLength <= size))
+                            {
+                                this.imagen = id + "_" + DateTime.Now.ToString("MM-dd-yy_H.mm.ss") + this.imagen + extensiones;
+                                if (File.Exists(HttpContext.Current.Server.MapPath("~/Uploads/" + imagen)))
+                                {
+                                    File.Delete(HttpContext.Current.Server.MapPath("~/Uploads/" + imagen));
+                                }
+                                Foto.SaveAs(HttpContext.Current.Server.MapPath("~/Uploads/" + imagen));
+                            }
+                            db.Entry(this).State = EntityState.Modified;
+                        }
                     }
                     else
                     {
-                        db.Entry(this).State = EntityState.Added;
+                        if (Foto != null)
+                        {
+                            const int size = 1024 * 1024 * 5;
+                            var filtroextension = new[] { ".jpg", ".jpeg", ".png", ".gif" };
+                            var extensiones = Path.GetExtension(Foto.FileName);
+
+                            if (filtroextension.Contains(extensiones) && (Foto.ContentLength <= size))
+                            {
+                                this.imagen = id + "_" + DateTime.Now.ToString("MM-dd-yy_H.mm.ss") + this.imagen + extensiones;
+                                if (File.Exists(HttpContext.Current.Server.MapPath("~/Uploads/" + imagen)))
+                                {
+                                    File.Delete(HttpContext.Current.Server.MapPath("~/Uploads/" + imagen));
+                                }
+                                Foto.SaveAs(HttpContext.Current.Server.MapPath("~/Uploads/" + imagen));
+                            }
+
+                            this.clave = HashHelper.MD5(clave);
+
+                            db.Entry(this).State = EntityState.Added;
+                        }
                     }
                     db.SaveChanges();
                 }

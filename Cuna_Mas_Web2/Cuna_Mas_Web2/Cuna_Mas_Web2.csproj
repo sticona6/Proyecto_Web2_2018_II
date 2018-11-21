@@ -618,6 +618,7 @@
     <Content Include="Views\Usuario\Index.cshtml" />
     <Content Include="Views\Usuario\Ver.cshtml" />
     <Content Include="Views\Usuario\AgregarEditar.cshtml" />
+    <Content Include="Views\Madre_Guia\Index.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
@@ -629,13 +630,13 @@
     <Folder Include="App_Data\" />
     <Folder Include="Assets\vendor\font-awesome\less\" />
     <Folder Include="Assets\vendor\font-awesome\scss\" />
+    <Folder Include="Uploads\" />
     <Folder Include="Views\Administracion\" />
     <Folder Include="Views\DatosQR\" />
     <Folder Include="Views\Default\" />
     <Folder Include="Views\Grafico\" />
     <Folder Include="Views\Jefa\" />
     <Folder Include="Views\Madre_Familia\" />
-    <Folder Include="Views\Madre_Guia\" />
     <Folder Include="Views\Mantenimiento\" />
     <Folder Include="Views\MetodoAprendizaje\" />
     <Folder Include="Views\Visualizar\" />

@@ -3,26 +3,61 @@
     ViewBag.Title = "Ver";
     string fecha = String.Format("{0:dd/MM/yyyy}", Model.fecha_revision);
 }
-
-<br />
-<nav aria-label="breadcrumb">
-    <ol class="breadcrumb">
-        <li class="breadcrumb-item" style="padding-left:10px"><a href="~/DatosMedicos/Index">Lista Datos Medicos</a></li>
+<header class="page-header">
+    <div class="container-fluid">
+        <h2 class="no-margin-bottom">Ver de Datos Medicos</h2>
+    </div>
+</header>
+<div class="breadcrumb-holder container-fluid">
+    <ul class="breadcrumb">
+        <li class="breadcrumb-item"><a href="~/DatosMedicos/Index">Lista de Datos Medicos</a></li>
         <li class="breadcrumb-item active">@Model.nombre</li>
-    </ol>
-</nav>
-<br />
-<div class="container">
-    <div class="row">
-        <div class="card col-md" style="margin: 0.2em 0.2em; padding-top:1em;">
-            <div class="card-body">
-                <h3>Datos Medicos</h3>
-                <p class="card-title"><b>Nombre del niño: </b>@Model.Ninio.nombre</p>
-                <p class="card-title"><b>Altura: </b>@Model.altura</p>
-                <p class="card-text"><b>Peso: </b>@Model.peso</p>
-                <p class="card-text"><b>Fecha de la revisión: </b>@fecha</p>
+    </ul>
+</div>
+
+<section class="forms">
+    <div class="container-fluid">
+        <div class="row">
+            @Html.HiddenFor(x => x.id)
+            <div class="col-lg-9">
+                <div class="card">
+                    <div class="card-close">
+                        <div class="dropdown">
+                            <button type="button" id="closeCard5" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" class="dropdown-toggle"><i class="fa fa-ellipsis-v"></i></button>
+                            <div aria-labelledby="closeCard5" class="dropdown-menu dropdown-menu-right has-shadow"><a href="#" class="dropdown-item remove"> <i class="fa fa-times"></i>Close</a><a href="#" class="dropdown-item edit"> <i class="fa fa-gear"></i>Edit</a></div>
+                        </div>
+                    </div>
+                    <div class="card-header d-flex align-items-center">
+                        <h3 class="h4">Datos Medicos</h3>
+                    </div>
+                    <div class="card-body">
+                        <div class="form-group row">
+                            <label class="col-sm-3 form-control-label">Nombre del Niño</label>
+                            <div class="col-sm-6">
+                                <small class="form-text">@Model.Ninio.nombre</small>
+                            </div>
+                        </div>
+                        <div class="form-group row">
+                            <label class="col-sm-3 form-control-label">Altura del Niño</label>
+                            <div class="col-sm-6">
+                                <small class="form-text">@Model.altura</small>
+                            </div>
+                        </div>
+                        <div class="form-group row">
+                            <label class="col-sm-3 form-control-label">Peso del Niño</label>
+                            <div class="col-sm-6">
+                                <small class="form-text">@Model.peso</small>
+                            </div>
+                        </div>
+                        <div class="form-group row">
+                            <label class="col-sm-3 form-control-label">Fecha de la Revisión</label>
+                            <div class="col-sm-6">
+                                <small class="form-text">@fecha</small>
+                            </div>
+                        </div>
+                    </div>
+                </div>
             </div>
         </div>
     </div>
-</div>
-<br />
+</section>  
