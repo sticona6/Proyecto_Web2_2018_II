@@ -1,3 +1,4 @@
+﻿@using Cuna_Mas_Web2.Models
 @{
     string controlador = ViewContext.RouteData.Values["controller"].ToString().ToLower();
 
@@ -7,6 +8,7 @@
 <html>
 <head>
     <meta charset="utf-8">
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <title>Cuna Más</title>
     <meta name="description" content="">
@@ -174,7 +176,9 @@
                             <li>@Html.ActionLink("Reunión", "TablaReunion", "Tablas")</li>
                             <li>@Html.ActionLink("Niños", "TablaNinios", "Tablas")</li>
                             <li>@Html.ActionLink("Alimentación", "TablaAlimentacion", "Tablas")</li>
-                            <li>@Html.ActionLink("Observación", "TablaObservacion", "Tablas")</li>
+                            <li>@Html.ActionLink("Observación", "Index", "Observacion")</li>
+                            <li>@Html.ActionLink("Metodo de Aprendizaje", "Index", "MetodoAprendizaje")</li>
+                            <li>@Html.ActionLink("Racìones", "Index", "Racion")</li>
                             <li>@Html.ActionLink("QR", "Index", "QR")</li>
                         </ul>
                     </li>

@@ -1,4 +1,4 @@
-@model Cuna_Mas_Web2.Models.MetodoAprendizaje
+﻿@model Cuna_Mas_Web2.Models.MetodoAprendizaje
 @{
     ViewBag.Title = "AgregarEditar";
 }
@@ -7,9 +7,9 @@
     <h2 class="text-center">Mantenimiento de Metodos de Aprendizaje</h2>
     <div>
         <ol class="breadcrumb">
-            <li class="breadcrumb-item" style="padding-left:0.5em;"><a href="~/Metodo/Index">Lista de Metodos</a></li>
+            <li class="breadcrumb-item" style="padding-left:0.5em;"><a href="~/MetodoAprendizaje/Index">Lista de Metodos</a></li>
             <li class="breadcrumb-item active">
-                @(Model.id > 0 ? Model.descripcion : "Nuevo Registro")
+                @(Model.id > 0 ? Model.nombre : "Nuevo Registro")
             </li>
         </ol>
     </div>
@@ -24,6 +24,12 @@
             <div class="form-group">
                 @Html.Label("Id:")
                 @Html.TextBoxFor(x => x.id, new { @class = "form-control", disabled = true })
+            </div>
+
+            <div class="form-group">
+                @Html.Label("Nombre:")
+                @Html.TextBoxFor(x => x.nombre, new { @class = "form-control" })
+                @Html.ValidationMessageFor(x => x.nombre, null, new { @class = "label label-danger" })
             </div>
 
             <div class="form-group">
@@ -42,6 +48,19 @@
                 @Html.TextAreaFor(x => x.procedimiento, new { @class = "form-control" })
                 @Html.ValidationMessageFor(x => x.procedimiento, null, new { @class = "label label-danger" })
             </div>
+
+            <div class="form-group">
+                <div class="form-group">
+                    @Html.Label("Estado:")
+                    <select name="estado" class="form-control">
+                        <option @(Model.estado == "" ? "selected" : "") value="">-Seleccionar-</option>
+                        <option @(Model.estado == "A" ? "selected" : "") value="A">Activo</option>
+                        <option @(Model.estado == "I" ? "selected" : "") value="I">Inactivo</option>
+                      </select>
+                    @Html.ValidationMessageFor(x => x.estado, null, new { @class = "label label-danger" })
+                </div>
+            </div>
+
         </div>
     </div>
     <div class="text-right">

@@ -12,7 +12,7 @@ namespace Cuna_Mas_Web2.Controllers.Mantenimiento.Madre
         // GET: Observacion
         public ActionResult Index()
         {
-            return View();
+            return View(observacion.Listar());
         }
         public ActionResult Ver(int id)
         {

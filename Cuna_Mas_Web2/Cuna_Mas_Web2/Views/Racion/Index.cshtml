@@ -1,0 +1,58 @@
+﻿@model List<Cuna_Mas_Web2.Models.Racion>
+@{
+    ViewBag.Title = "Racion";
+    Cuna_Mas_Web2.Models.Usuario usuario = new Cuna_Mas_Web2.Models.Usuario().Obtener(Cuna_Mas_Web2.Models.SessionHelper.GetUser());
+}
+<!-- Page Header-->
+<br />
+<!-- Breadcrumb-->
+<section class="tables">
+    <div class="container-fluid">
+        <div class="">
+            <div class="">
+                <div class="card">
+                    <div class="card-header d-flex align-items-center">
+                        <h3 class="h4">Ración</h3>
+                    </div>
+                    <div class="card-body">
+                        <div class="table-responsive">
+                            <table class="table">
+                                <thead>
+                                    <tr>
+                                        <th>#</th>
+                                        <th>Desayuno</th>
+                                        <th>Refrigerio</th>
+                                        <th>Almuerzo</th>
+                                        <th>Postre</th>
+                                        <th>Fecha</th>
+                                        <th>Niño</th>
+                                        <th>Estado</th>
+                                        <th>Acciones</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    @foreach (var item in Model)
+                                    {
+                                        <tr>
+                                            <th scope="row">@(item.id)</th>
+                                            <td>@(item.desayuno)</td>
+                                            <td>@(item.refrigerio)</td>
+                                            <td>@(item.almuerzo)</td>
+                                            <td>@(item.postre)</td>
+                                            <td>@(item.fecha</td>
+                                            <td>@(item.Ninio.nombre)</td>
+                                            <td>@(item.estado == "A" ? "Activo":"Inactivo")</td>
+                                            <td>
+                                                <a href="~/Racion/Ver/@item.id" class="btn btn-sm btn-warning">Detalles</a>
+                                            </td>
+                                        </tr>
+                                    }
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>

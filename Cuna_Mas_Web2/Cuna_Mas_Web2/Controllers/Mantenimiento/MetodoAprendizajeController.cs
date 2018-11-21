@@ -15,7 +15,7 @@ namespace Cuna_Mas_Web2.Controllers.Mantenimiento
         // GET: MetodoAprendizaje
         public ActionResult Index()
         {
-            return View();
+            return View(metodo.Listar());
         }
         public ActionResult Ver(int id)
         {
