@@ -156,7 +156,7 @@
                 
                 <!-- Sidebar Navidation Menus--><span class="heading">Principal</span>
                 <ul class="list-unstyled">
-                    @if (usuario.tipo.Equals("Jefa")) {
+                    @if (usuario.tipo.Contains("Jefa")) {
                         <li>@Html.ActionLink("Inicio", "MadreJefa", "Visualizar")</li>
                     }
                     else if (usuario.tipo.Equals("Madre Familia")) {
@@ -165,7 +165,7 @@
                     else if (usuario.tipo.Equals("Madre Guia")) {
                         <li>@Html.ActionLink("Inicio", "Administrador", "Principal")</li>
                     }
-                    else if (usuario.tipo.Equals("Madre Cuidadora")) {
+                    else if (usuario.tipo.Contains("Cuidadora")) {
                         <li>@Html.ActionLink("Inicio", "MadreCuidadora", "Visualizar")</li>
                     }
 

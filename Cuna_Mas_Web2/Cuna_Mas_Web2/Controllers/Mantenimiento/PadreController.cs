@@ -15,9 +15,11 @@ namespace Cuna_Mas_Web2.Controllers.Mantenimiento
         private Usuario usuario = new Usuario();
         private Reunion reunion = new Reunion();
         private Models.Madre madre = new Models.Madre();
+
         // GET: Padre
         public ActionResult Index()
         {
+            ViewBag.madres = madre.Listar();
             return View(padre.Listar());
         }
 

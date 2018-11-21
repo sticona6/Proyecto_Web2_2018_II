@@ -14,24 +14,16 @@ namespace Cuna_Mas_Web2.Controllers.Mantenimiento
         private Ranking ranking = new Ranking();
         private Models.Madre madre = new Models.Madre();
         // GET: Ranking
-        public ActionResult Index()
-        {
-            return View(ranking.Listar());
-        }
-
-        public ActionResult Ver(int id)
-        {
-            return View(ranking.Obtener(id));
-        }
-
+        //public ActionResult Index()
+        //{
+        //    return View(ranking.Listar());
+        //}
+        
         public ActionResult AgregarEditar(int id = 0)
         {
             ViewBag.madre = madre.Listar();
-            
-            return View(
-                id == 0 ? new Ranking() //agregar un nuevo objeto
-                : ranking.Obtener(id)
-                );
+
+            return View(new Ranking());//agregar un nuevo objeto);
         }
 
         public ActionResult Guardar(Ranking ranking)
@@ -39,11 +31,11 @@ namespace Cuna_Mas_Web2.Controllers.Mantenimiento
             if (ModelState.IsValid)
             {
                 ranking.Guardar();
-                return Redirect("~/Ranking");
+                return Redirect("~/Padre");
             }
             else
             {
-                return View("~/Views/Ranking/AgregarEditar.cshtml", ranking);
+                return Redirect("~/Ninio");
             }
         }
 

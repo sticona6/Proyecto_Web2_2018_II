@@ -10,15 +10,15 @@
         <h2 class="text-center">Mantenimiento de Ranking</h2>
         <div>
             <ol class="breadcrumb">
-                <li class="breadcrumb-item" style="padding-left:0.5em;"><a href="~/Ranking/Index">Lista de Datos Medicos</a></li>
+                <li class="breadcrumb-item" style="padding-left:0.5em;"><a href="~/Ninio/Index">Lista de Niños</a></li>
                 <li class="breadcrumb-item active">
-                    @(Model.id > 0 ? Model.Madre.nombre : "Nuevo Registro")
+                    @(Model.id > 0 ? "Madre" : "Nuevo Registro")
                 </li>
             </ol>
         </div>
     </nav>
     <br />
-    @using (Html.BeginForm("Guardar", "Ranking", FormMethod.Post, new { @id = "frm-persona" }))
+    @using (Html.BeginForm("Guardar", "Ranking", FormMethod.Post, new { @id = "frm-ranking" }))
     {
         @Html.HiddenFor(x => x.id)
         <div class="panel panel-default">
@@ -31,7 +31,13 @@
                     </div>
                     <div class="form-group col-md-4">
                         @Html.Label("Puntuación:")
-                        @Html.TextBoxFor(x => x.puntuacion, new { @class = "form-control" })
+                        <select name="puntuacion" class="form-control">
+                            <option value="4">Excelente</option>
+                            <option value="3">Bueno</option>
+                            <option value="2">Regular</option>
+                            <option value="1">Malo</option>
+                            <option value="0">Pesimo</option>
+                        </select>
                         @Html.ValidationMessageFor(x => x.puntuacion, null, new { @class = "label label-danger" })
                     </div>
                     <div class="form-group col-md-4">
