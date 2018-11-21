@@ -148,6 +148,9 @@ namespace Cuna_Mas_Web2.Models
                                 }
                                 Foto.SaveAs(HttpContext.Current.Server.MapPath("~/Uploads/" + imagen));
                             }
+
+                            this.clave = HashHelper.MD5(clave);
+
                             db.Entry(this).State = EntityState.Modified;
                         }
                     }

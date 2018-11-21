@@ -129,6 +129,33 @@ namespace Cuna_Mas_Web2.Models
                 throw;
             }
         }
+        public List<Padre> ListarPadre(string vComite)
+        {
+            string Activo = "A";
+            var objTipo = new List<Padre>();
+            try
+            {
+                using (var db = new Model_CM())
+                {
+                    if (!vComite.Equals(""))
+                    {
+                    objTipo = db.Padre.Include("Madre")
+                                      .Include("Usuario")  
+                                      .Where(x=>x.Madre.comite.Equals(vComite) && x.estado.Equals(Activo))
+                                      .ToList();
+                    }
+                    else {
+                        List<Padre>  lPadre = new List<Padre>();
+                        objTipo = lPadre.ToList();
+                }
+            }
+            }
+            catch (Exception)
+            {
+                throw;
+            }
+            return objTipo;
+        }
 
     }
 }
