@@ -630,6 +630,7 @@
     <Content Include="Views\Padre\_PartialAgregarRanking.cshtml" />
     <Content Include="Views\Madre_Guia\Index.cshtml" />
     <Content Include="Views\Madre_Familia\Index.cshtml" />
+    <Content Include="Views\Visualizar\Index.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
@@ -646,7 +647,6 @@
     <Folder Include="Views\Grafico\" />
     <Folder Include="Views\Jefa\" />
     <Folder Include="Views\Mantenimiento\" />
-    <Folder Include="Views\Visualizar\" />
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>

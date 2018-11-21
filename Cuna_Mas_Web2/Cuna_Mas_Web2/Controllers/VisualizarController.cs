@@ -12,9 +12,12 @@ namespace Cuna_Mas_Web2.Controllers
     {
         // GET: Visualizar
         private Ninio ninios = new Ninio();
+        private Reunion reunion = new Reunion();
 
         public ActionResult Index()
         {
+            ViewBag.ninio = ninios.Listar();
+            ViewBag.reunion = reunion.Listar();
             return View();
         }
 

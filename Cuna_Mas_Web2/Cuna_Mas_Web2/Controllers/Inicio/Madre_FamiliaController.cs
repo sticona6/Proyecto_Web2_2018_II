@@ -21,17 +21,9 @@ namespace Cuna_Mas_Web2.Controllers.Inicio
         public ActionResult Index()
         {
             string vComite = "";
-            //foreach (var item in padre.Listar())
-            //{
-            //    if (usuario.fk_id_madre==(item.fk_id_madre))
-            //    {
-            //        vComite = item.Madre.comite;
-            //    }
-            //}
 
             vComite = usuario.comite;
-
-            //ViewBag.madrefamilia = madre.ListaMadreFamilia();
+            
             ViewBag.reunion = reunion.Listar();
             ViewBag.padre = padre.ListarPadre(vComite);
             return View();
