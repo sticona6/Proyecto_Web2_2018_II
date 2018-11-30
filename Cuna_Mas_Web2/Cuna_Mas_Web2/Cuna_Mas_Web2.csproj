@@ -558,6 +558,7 @@
     <Compile Include="Controllers\Grafico\GraficoController.cs" />
     <Compile Include="Controllers\Inicio\Madre_FamiliaController.cs" />
     <Compile Include="Controllers\Inicio\Madre_GuiaController.cs" />
+    <Compile Include="Controllers\Inicio\Padre_FamiliaController.cs" />
     <Compile Include="Controllers\LoginController.cs" />
     <Compile Include="Controllers\Mantenimiento\DatosMedicosController.cs" />
     <Compile Include="Controllers\Mantenimiento\DatosQRController.cs" />
@@ -630,6 +631,7 @@
     <Content Include="Views\Visualizar\_PartialListaPadresMadre.cshtml" />
     <Content Include="Views\Visualizar\_PartialCantidadMadre.cshtml" />
     <Content Include="Views\Visualizar\Index.cshtml" />
+    <Content Include="Views\Padre_Familia\Index.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>

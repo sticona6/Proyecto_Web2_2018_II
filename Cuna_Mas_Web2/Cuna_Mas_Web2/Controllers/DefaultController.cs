@@ -21,9 +21,21 @@ namespace Cuna_Mas_Web2.Controllers
             {
                 return Redirect("~/Visualizar/MadreJefa");
             }
+            else if (usu.tipo.Contains("Cuidadora"))
+            {
+                return Redirect("~/Visualizar/MadreCuidadora");
+            }
+            else if (usu.tipo.Contains("Guia"))
+            {
+                return Redirect("~/Madre_Guia");
+            }
+            else if (usu.tipo.Contains("Familia"))
+            {
+                return Redirect("~/Madre_Familia");
+            }
             else
             {
-                return View();
+                return Redirect("~/Padre_Familia");
             }
             
         }

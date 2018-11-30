@@ -82,5 +82,10 @@ namespace Cuna_Mas_Web2.Controllers
 
             return View();
         }
+
+        public ActionResult MadreCuidadora()
+        {
+            return View();
+        }
     }
 }

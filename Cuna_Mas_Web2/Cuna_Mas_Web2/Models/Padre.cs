@@ -100,7 +100,7 @@ namespace Cuna_Mas_Web2.Models
             {
                 using (var db = new Model_CM())
                 {
-                    objTipo = db.Padre.Include("Madre")
+                    objTipo = db.Padre.Include("Madre").Include("Reunion")
                         .Where(x => x.fk_id_usuario == id)
                         .SingleOrDefault();
                 }

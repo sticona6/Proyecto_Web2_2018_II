@@ -218,14 +218,14 @@
                                                     }
                                                     else if (usuario.tipo.Equals("Padre Familia"))
                                                     {
-                                                        <li>@Html.ActionLink("Inicio", "Index", "Visualizar")</li>
+                                                        <li>@Html.ActionLink("Inicio", "Index", "Padre_Familia")</li>
                                                     }
                                                     <li>
                                                         <a href="#exampledropdownDropdown" aria-expanded="false" data-toggle="collapse"> <i class="icon-interface-windows"></i>Tablas </a>
                                                         <ul id="exampledropdownDropdown" class="collapse list-unstyled ">
                                                             @if (usuario.tipo.Equals("Padre Familia"))
                                                             {
-
+                                                                <li> @Html.ActionLink("Niños", "Index", "Ninio") </li>
                                                             }
                                                             else if (usuario.tipo.Equals("Madre Guia"))
                                                             {
