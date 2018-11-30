@@ -1,0 +1,120 @@
+﻿@using System
+@{
+    List<Cuna_Mas_Web2.Models.Ninio> ninio = ViewBag.ninio;
+    List<Cuna_Mas_Web2.Models.Reunion> reunion = ViewBag.reunion;
+
+    string tipo = "Niño Afiliado";
+}
+<header class="page-header">
+    <div class="container-fluid">
+        <h2 class="no-margin-bottom">Dashboard</h2>
+    </div>
+</header><br />
+@*<section class="feeds no-padding-top">
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-lg-6">
+                <div class="articles card">
+                    <div class="card-close">
+                        <div class="dropdown">
+                            <button type="button" id="closeCard4" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" class="dropdown-toggle"><i class="fa fa-ellipsis-v"></i></button>
+                            <div aria-labelledby="closeCard4" class="dropdown-menu dropdown-menu-right has-shadow"><a href="#" class="dropdown-item remove"> <i class="fa fa-times"></i>Close</a><a href="#" class="dropdown-item edit"> <i class="fa fa-gear"></i>Edit</a></div>
+                        </div>
+                    </div>
+                    <div class="card-header d-flex align-items-center">
+                        <h2 class="h3">Lista de Padres   </h2>
+                    </div>
+                    <div class="card-body no-padding">
+                        @foreach (var item in ninio)
+                        {
+                            <div class="item d-flex align-items-center">
+                                <div class="image"><img src="~/Uploads/" alt="..." class="img-fluid rounded-circle"></div>
+                                <div class="text">
+                                    <a href="#">
+                                        <h3 class="h5">@(item.nombre)</h3>
+                                    </a><small>@(tipo)</small>
+                                </div>
+                            </div>
+                        }
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>*@
+         <section class="projects no-padding-top">
+             <div class="container-fluid">
+                 <!-- Project-->
+                 @foreach (var item in ninio)
+                 {
+                     <div class="project">
+                         <div class="row bg-white has-shadow">
+                             <div class="left-col col-lg-6 d-flex align-items-center justify-content-between">
+                                 <div class="project-title d-flex align-items-center">
+                                     <div class="image has-shadow"><img src="img/project-1.jpg" alt="..." class="img-fluid"></div>
+                                     <div class="text">
+                                         <h3 class="h4">@item.nombre</h3><small>@tipo</small>
+                                     </div>
+                                 </div>
+                                 <div class="project-date"><span class="hidden-sm-down">Hoy a las @DateTime.Now.Hour.ToString() : @DateTime.Now.Minute.ToString() PM</span></div>
+                             </div>
+                             <div class="right-col col-lg-6 d-flex align-items-center">
+                                 @*<div class="time"><i class="fa fa-clock-o"></i>12:00 PM </div>
+                                 <div class="comments"><i class="fa fa-comment-o"></i>20</div>*@
+                                 <div class="project-progress">
+                                     <div class="progress">
+                                         <div role="progressbar" style="width: 45%; height: 6px;" aria-valuenow="25" aria-valuemin="0" aria-valuemax="100" class="progress-bar bg-red"></div>
+                                     </div>
+                                 </div>
+                             </div>
+                         </div>
+                     </div>
+                 }
+             </div>
+         </section>
+<section class="updates no-padding-top">
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-lg-6">
+                <div class="recent-updates card">
+                    <div class="card-close">
+                        <div class="dropdown">
+                            <button type="button" id="closeCard6" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" class="dropdown-toggle"><i class="fa fa-ellipsis-v"></i></button>
+                            <div aria-labelledby="closeCard6" class="dropdown-menu dropdown-menu-right has-shadow"><a href="#" class="dropdown-item remove"> <i class="fa fa-times"></i>Close</a><a href="#" class="dropdown-item edit"> <i class="fa fa-gear"></i>Edit</a></div>
+                        </div>
+                    </div>
+                    <div class="card-header d-flex align-items-center">
+                        <h2 class="h3">Reuniones Recientes     </h2>
+                        <div class="badge badge-rounded bg-green">4 New       </div>
+                    </div>
+                    <div class="card-body no-padding">
+                        @foreach (var item in reunion)
+                        {
+                            string mes = Convert.ToDateTime(item.fecha).Month.ToString();
+
+                            for (int i = 1; i <= 12; i++)
+                            {
+                                string[] meses = { "Ene", "Feb", "Mar", "Abr", "May", "Jun", "Jul", "Ago", "Sep", "Oct", "Nov", "Dic" };
+                                if (mes.Equals(i.ToString()))
+                                {
+                                    mes = meses[i - 1];
+                                }
+                            }
+                            <!-- Item-->
+                            <div class="item d-flex justify-content-between">
+                                <div class="info d-flex">
+                                    <div class="icon"><i class="icon-rss-feed"></i></div>
+                                    <div class="title">
+                                        <h5>@item.nombre</h5>
+                                        <p>@item.descripcion</p>
+                                    </div>
+                                </div>
+                                <div class="date text-right"><strong>@(Convert.ToDateTime(item.fecha).Day.ToString())</strong><span>@(mes)</span></div>
+                            </div>
+                        }
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>

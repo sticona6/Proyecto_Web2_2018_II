@@ -629,6 +629,7 @@
     <Content Include="Views\Visualizar\_PartialReunionesMadre.cshtml" />
     <Content Include="Views\Visualizar\_PartialListaPadresMadre.cshtml" />
     <Content Include="Views\Visualizar\_PartialCantidadMadre.cshtml" />
+    <Content Include="Views\Visualizar\Index.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>

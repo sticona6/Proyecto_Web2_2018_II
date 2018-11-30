@@ -3,6 +3,11 @@
     string controlador = ViewContext.RouteData.Values["controller"].ToString().ToLower();
 
     Cuna_Mas_Web2.Models.Usuario usuario = new Cuna_Mas_Web2.Models.Usuario().Obtener(Cuna_Mas_Web2.Models.SessionHelper.GetUser());
+    List<Cuna_Mas_Web2.Models.Madre> madre = new Cuna_Mas_Web2.Models.Madre().Listar();
+    List<Cuna_Mas_Web2.Models.Padre> padre = new Cuna_Mas_Web2.Models.Padre().Listar();
+
+    string name = "";
+    string h = "";
 }
 <!DOCTYPE html>
 <html>
@@ -149,48 +154,114 @@
                     <div id="Madre" class="sidebar-header d-flex align-items-center">
                         <div class="avatar"><img src="~/Uploads/@usuario.imagen" alt="..." class="img-fluid rounded-circle"></div>
                         <div class="title">
-                            <h1 class="h4">@(usuario.usuario1)</h1> <!-- Nombre -->
+                            @if (usuario.tipo.Equals("Padre Familia"))
+                            {
+                                foreach (var item in padre)
+                                {
+                                    if (item.fk_id_usuario.Equals(usuario.id))
+                                    {
+                                        name = item.apoderado;
+                                        char[] aName = name.ToCharArray();
+                                        if (aName.Count() > 10)
+                                        {
+                                            h = "h5";
+                                        }
+                                        else
+                                        {
+                                            h = "h3";
+                                        }
+                                    }
+                                }
+                                <h1 class="@h">@name</h1> <!-- Nombre -->
+                            }
+                            else
+                            {
+                                foreach (var item in madre)
+                                {
+                                    if (item.fk_id_usuario.Equals(usuario.id))
+                                    {
+                                        name = item.nombre + " " + item.apellido;
+                                        char[] aName = name.ToCharArray();
+                                        if (aName.Count() > 10)
+                                        {
+                                            h = "h5";
+                                        }
+                                        else
+                                        {
+                                            h = "h4";
+                                        }
+                                    }
+                                }
+                                <h1 class="@h">@name</h1> <!-- Nombre -->
+                        }
                             <p>@usuario.tipo</p><!-- Tipo -->
                         </div>
                     </div>
                 
                 <!-- Sidebar Navidation Menus--><span class="heading">Principal</span>
-                <ul class="list-unstyled">
-                    @if (usuario.tipo.Contains("Jefa")) {
-                        <li>@Html.ActionLink("Inicio", "MadreJefa", "Visualizar")</li>
-                    }
-                    else if (usuario.tipo.Equals("Madre Familia")) {
-                        <li>@Html.ActionLink("Inicio", "Administrador", "Principal")</li>
-                    }
-                    else if (usuario.tipo.Equals("Madre Guia")) {
-                        <li>@Html.ActionLink("Inicio", "Administrador", "Principal")</li>
-                    }
-                    else if (usuario.tipo.Contains("Cuidadora")) {
-                        <li>@Html.ActionLink("Inicio", "MadreCuidadora", "Visualizar")</li>
-                    }
+                                                <ul class="list-unstyled">
+                                                    @if (usuario.tipo.Equals("Jefa"))
+                                                    {
+                                                        <li>@Html.ActionLink("Inicio", "MadreJefa", "Visualizar")</li>
+                                                    }
+                                                    else if (usuario.tipo.Equals("Madre Familia"))
+                                                    {
+                                                        <li>@Html.ActionLink("Inicio", "Index", "Madre_Familia")</li>
+                                                    }
+                                                    else if (usuario.tipo.Equals("Madre Guia"))
+                                                    {
+                                                        <li>@Html.ActionLink("Inicio", "Index", "Madre_Guia")</li>
+                                                    }
+                                                    else if (usuario.tipo.Contains("Madre Cuidadora"))
+                                                    {
+                                                        <li>@Html.ActionLink("Inicio", "Index", "Madre_Cuidadora")</li>
+                                                    }
+                                                    else if (usuario.tipo.Equals("Padre Familia"))
+                                                    {
+                                                        <li>@Html.ActionLink("Inicio", "Index", "Visualizar")</li>
+                                                    }
+                                                    <li>
+                                                        <a href="#exampledropdownDropdown" aria-expanded="false" data-toggle="collapse"> <i class="icon-interface-windows"></i>Tablas </a>
+                                                        <ul id="exampledropdownDropdown" class="collapse list-unstyled ">
+                                                            @if (usuario.tipo.Equals("Padre Familia"))
+                                                            {
 
-                    <li>
-                        <a href="#exampledropdownDropdown" aria-expanded="false" data-toggle="collapse"> <i class="icon-interface-windows"></i>Tablas </a>
-                        <ul id="exampledropdownDropdown" class="collapse list-unstyled ">
-                            @if (!usuario.tipo.Contains("Padre"))
-                            {
-                                <li>@Html.ActionLink("Padres", "Index", "Padre")</li>
-                            }
-                            <li>@Html.ActionLink("Niños", "Index", "Ninio")</li>
+                                                            }
+                                                            else if (usuario.tipo.Equals("Madre Guia"))
+                                                            {
+                                                                <li> @Html.ActionLink("Madre Cuidadora", "Index", "Madre") </li>
+                                                                <li> @Html.ActionLink("Padre Familia", "Index", "Padre") </li>
+                                                                <li> @Html.ActionLink("Niños", "Index", "Ninio") </li>
+                                                                <li> @Html.ActionLink("Observaciones", "Index", "Observacion") </li>
+                                                            }
+                                                            else if (usuario.tipo.Equals("Madre Cuidadora"))
+                                                            {
+                                                                <li> @Html.ActionLink("Datos Médicos", "Index", "DatosMedicos") </li>
+                                                                <li> @Html.ActionLink("Alimentación", "Index", "MetodoAprendizaje") </li>
+                                                                <li> @Html.ActionLink("Padre Familia", "Index", "Padre") </li>
+                                                                <li> @Html.ActionLink("Niños", "Index", "Ninio") </li>
+                                                                <li> @Html.ActionLink("Datos QR", "Index", "DatosQR") </li>
+                                                            }
+                                                            else if (usuario.tipo.Equals("Madre Familia"))
+                                                            {
+                                                                <li> @Html.ActionLink("Madre Cuidadora", "Index", "Madre") </li>
+                                                                <li> @Html.ActionLink("Padre Familia", "Index", "Padre") </li>
+                                                                <li> @Html.ActionLink("Niños", "Index", "Ninio") </li>
+                                                                <li> @Html.ActionLink("Observaciones", "Index", "Observacion") </li>
+                                                            }
+                                                            else if (usuario.tipo.Equals("Jefa"))
+                                                            {
 
-                            @if (usuario.tipo.Contains("Madre"))
-                            {
-                                <li> @Html.ActionLink("Alimentación", "TablaAlimentacion", "Tablas") </li>
-                                <li> @Html.ActionLink("Observación", "Index", "Observacion") </li>
-                                <li> @Html.ActionLink("Metodo de Aprendizaje", "Index", "MetodoAprendizaje") </li>
-                                <li> @Html.ActionLink("Racíones", "Index", "Racion") </li>
-                                <li> @Html.ActionLink("QR", "Index", "QR") </li>
-                            }
-
-                        </ul>
-                    </li>
-                    <li>@Html.ActionLink("Graficos", "Index", "Graficos")</li>
-                </ul>
+                                                                <li> @Html.ActionLink("Madres Trabajadoras", "Index", "Madre") </li>
+                                                                <li> @Html.ActionLink("Padre de Familia", "Index", "Padre") </li>
+                                                                <li> @Html.ActionLink("Niños Afiliados", "Index", "Ninio") </li>
+                                                                <li> @Html.ActionLink("Datos Médicos", "Index", "DatosMedicos") </li>
+                                                                <li> @Html.ActionLink("Observaciones", "Index", "Observacion") </li>
+                                                            }
+                                                        </ul>
+                                                    </li>
+                                                    <li>@Html.ActionLink("Graficos", "Index", "Graficos")</li>
+                                                </ul>
             </nav>
 
 
