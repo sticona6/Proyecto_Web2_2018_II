@@ -1,7 +1,9 @@
 ﻿@model Cuna_Mas_Web2.Models.Ranking
-@{ 
+@{
     Cuna_Mas_Web2.Models.Usuario usu = new Cuna_Mas_Web2.Models.Usuario().Obtener(Cuna_Mas_Web2.Models.SessionHelper.GetUser());
     Cuna_Mas_Web2.Models.Padre papa = new Cuna_Mas_Web2.Models.Padre().ObtenerPapa(usu.id);
+
+    List<Cuna_Mas_Web2.Models.Madre> Madres = new Cuna_Mas_Web2.Models.Madre().Listar();
 }
 
 <section class="tables">
@@ -10,44 +12,47 @@
             <div class="">
                 <div class="card">
                     <div class="card-header d-flex align-items-center">
-                        <h3 class="h4">Datos Padre</h3>
+                        <h3 class="h4 text-center">Ranking Madres</h3>
                     </div>
                     <div class="card-body">
-                        @using (Html.BeginForm("Guardar", "Ranking", FormMethod.Post, new { @id = "frm-padre" }))
-                        {
-                            <div class="form-group">
-                                @Html.Label("Seleccione a la Madre")
-                                <select name="fk_id_madre" class="form-control">
-                                    <option value="">Seleccione</option>
-                                    @foreach (var item in ViewBag.madres)
-                                    {
-                                        <option value="@item.id">
-                                            @item.nombre
-                                        </option>
-                                    }
-                                </select>
-                                @Html.ValidationMessageFor(x => x.fk_id_madre, null, new { @class = "label label-danger" })
-                            </div>
+                        <div class="table-responsive">
+                            @using (Html.BeginForm("Guardar", "Ranking", FormMethod.Post, new { @id = "form-ranking" }))
+                            {
+                                @Html.HiddenFor(x => x.id)
+                                <div class="form-group" style="display:none;">
+                                    @Html.Label("ID")
+                                    @Html.TextBoxFor(x => x.id, new { @class = "form-control", disabled = true })
+                                </div>
+                                <div class="form-group" style="display:none;">
+                                    @Html.Label("Padre")
+                                    <input type="text" value="@papa.id" name="fk_id_padre" class="form-control" />
+                                </div>
+                                <div class="form-group">
+                                    @Html.Label("Califique el desempeño")
+                                    <select name="puntuacion" class="form-control">
+                                        <option value=""> --Seleccione-- </option>
+                                        <option value="5"> Muy Bueno </option>
+                                        <option value="4"> Bueno </option>
+                                        <option value="3"> Regular </option>
+                                        <option value="2"> Malo </option>
+                                        <option value="1"> Muy Malo </option>
+                                    </select>
+                                </div>
+                                <div class="form-group">
+                                    @Html.Label("Madre")
+                                    <select name="fk_id_madre" class="form-control">
+                                        @foreach (var item in Madres)
+                                        {
+                                            <option value="@(item.id)"> @item.nombre</option>
+                                        }
+                                    </select>
+                                </div>
+                                <div class="text-right">
+                                    <button type="submit" class="btn btn-primary">Grabar</button>
+                                </div>
+                            }
 
-                            <div class="form-group">
-                                @Html.Label("Califique el desempeño de la Madre")
-                                <select name="puntuacion" class="form-control">
-                                    <option value="4">Excelente</option>
-                                    <option value="3">Bueno</option>
-                                    <option value="2">Regular</option>
-                                    <option value="1">Malo</option>
-                                    <option value="0">Pesimo</option>
-                                </select>
-                                @Html.ValidationMessageFor(x => x.puntuacion, null, new { @class = "label label-danger" })
-                            </div>
-
-                            //ID del Padre que va a votar
-                            <div class="form-group">
-                                @Html.TextBoxFor(x => x.fk_id_padre, new { @class = "form-control", disabled = true, @Value = papa.id })
-                            </div>
-
-                            <button class="btn-success">ENVIAR</button>
-                        }
+                        </div>
                     </div>
                 </div>
             </div>

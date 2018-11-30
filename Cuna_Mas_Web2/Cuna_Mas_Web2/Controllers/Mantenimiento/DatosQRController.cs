@@ -52,38 +52,8 @@ namespace Cuna_Mas_Web2.Controllers.Mantenimiento
                 var contenido = objracion.desayuno + ", " + objracion.refrigerio + ", " + objracion.almuerzo + ", " + objracion.postre;
                 var codeImage = QRHelper.GenerateQRCode(contenido.ToString(), 250);
                 codeImage.Save(Server.MapPath("~/Uploads/" + objracion.Ninio.nombre + ".png"), ImageFormat.Png);
-
-                return Redirect("~/DatosQR");
             }
-            else
-            {
-                return Redirect("~/Default");
-            }
-
-            //DatosQR objdatosQR = new DatosQR();
-
-            //objdatosQR.qr = objracion.Ninio.nombre + ".png";
-            //objdatosQR.fecha = DateTime.Today;
-            //objdatosQR.fk_id_racion = objracion.id;
-
-
-
-            //if (ModelState.IsValid)
-            //{
-            //    datosQR.Guardar();
-
-            //    //Save QR code
-            //    var QRHelper = new QRCodeHelper();
-            //    var contenido = objracion.desayuno + ", " + objracion.refrigerio + ", " + objracion.almuerzo + ", " + objracion.postre;
-            //    var codeImage = QRHelper.GenerateQRCode(contenido.ToString(), 250);
-            //    codeImage.Save(Server.MapPath("~/Uploads/" + objracion.Ninio.nombre + ".png"), ImageFormat.Png);
-
-            //    return Redirect("~/DatosQR");
-            //}
-            //else
-            //{
-            //    return View("~/Views/DatosQR/AgregarEditar.cshtml", datosQR);
-            //}
+            return Redirect("~/Ninio");
         }
 
         public ActionResult Eliminar(int id)

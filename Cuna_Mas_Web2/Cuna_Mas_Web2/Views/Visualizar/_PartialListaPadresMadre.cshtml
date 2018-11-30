@@ -1,0 +1,28 @@
+﻿@using Cuna_Mas_Web2.Models;
+@model Padre
+
+@{ 
+    List<Padre> Padres = ViewBag.Padres;
+}
+
+<div class="col-lg-12">
+    <div class="articles card">
+        <div class="card-header d-flex align-items-center">
+            <h2 class="h3">Lista de Padres   </h2>
+            <div class="badge badge-rounded bg-green">@(Padres.Count + " Padres")       </div>
+        </div>
+        <div class="card-body no-padding">
+            @foreach (var item in Padres)
+            {
+                <div class="item d-flex align-items-center">
+                    <div class="image"><img src="img/imagenUsuario.png" alt="..." class="img-fluid rounded-circle"></div>
+                    <div class="text">
+                        <a href="~/Padre/Ver/@item.id">
+                            <h3 class="h5">@("Padre: " + item.nombrePadre + ", Madre: " + item.nombreMadre)</h3>
+                        </a><small>@("Dirección: " + item.direccion + ", Telefono: " + item.telefono)   </small>
+                    </div>
+                </div>
+            }
+        </div>
+    </div>
+</div>

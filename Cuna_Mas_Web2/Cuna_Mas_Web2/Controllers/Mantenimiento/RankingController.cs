@@ -26,11 +26,21 @@ namespace Cuna_Mas_Web2.Controllers.Mantenimiento
             return View(new Ranking());//agregar un nuevo objeto);
         }
 
-        public ActionResult Guardar(Ranking ranking)
+        public ActionResult Guardar(Ranking rankModel)
         {
             if (ModelState.IsValid)
             {
-                ranking.Guardar();
+                Ranking rankAux = new Ranking().ObtenerPadreRanking(rankModel.fk_id_padre);
+                if (rankAux != null)
+                {
+                    rankModel.id = rankAux.id;
+                    rankModel.Guardar();
+                }
+                else
+                {
+                    rankModel.Guardar();
+                }
+
                 return Redirect("~/Padre");
             }
             else

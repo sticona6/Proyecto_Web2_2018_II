@@ -619,17 +619,16 @@
     <Content Include="Views\Padre\Index.cshtml" />
     <Content Include="Views\Padre\Ver.cshtml" />
     <Content Include="Views\Padre\AgregarEditar.cshtml" />
-    <Content Include="Views\Ranking\Index.cshtml" />
-    <Content Include="Views\Ranking\Ver.cshtml" />
-    <Content Include="Views\Ranking\AgregarEditar.cshtml" />
     <Content Include="Views\Usuario\Index.cshtml" />
     <Content Include="Views\Usuario\Ver.cshtml" />
     <Content Include="Views\Usuario\AgregarEditar.cshtml" />
     <Content Include="Views\Visualizar\MadreJefa.cshtml" />
-    <Content Include="Views\Visualizar\_PartialRanking.cshtml" />
     <Content Include="Views\Padre\_PartialAgregarRanking.cshtml" />
     <Content Include="Views\Madre_Guia\Index.cshtml" />
     <Content Include="Views\Madre_Familia\Index.cshtml" />
+    <Content Include="Views\Visualizar\_PartialReunionesMadre.cshtml" />
+    <Content Include="Views\Visualizar\_PartialListaPadresMadre.cshtml" />
+    <Content Include="Views\Visualizar\_PartialCantidadMadre.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
@@ -646,7 +645,7 @@
     <Folder Include="Views\Grafico\" />
     <Folder Include="Views\Jefa\" />
     <Folder Include="Views\Mantenimiento\" />
-    <Folder Include="Views\Visualizar\" />
+    <Folder Include="Views\Ranking\" />
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>

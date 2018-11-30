@@ -1,0 +1,62 @@
+﻿@using Cuna_Mas_Web2.Models;
+@{ 
+   
+}
+<section class="dashboard-counts no-padding-bottom">
+    <div class="">
+        <div class="row bg-white has-shadow">
+            <!-- Item -->
+            <div class="col-xl-3 col-sm-6">
+                <div class="item d-flex align-items-center">
+                    <div class="icon bg-violet"><i class="icon-user"></i></div>
+                    <div class="title">
+                        <span>Cantidad<br>Niños</span>
+                        <div class="progress">
+                            <div role="progressbar" style="width: 100%; height: 4px;" aria-valuenow="" aria-valuemin="0" aria-valuemax="100" class="progress-bar bg-violet"></div>
+                        </div>
+                    </div>
+                    <div class="number"><strong>@ViewBag.cantNinios</strong></div>
+                </div>
+            </div>
+            <!-- Item -->
+            <div class="col-xl-3 col-sm-6">
+                <div class="item d-flex align-items-center">
+                    <div class="icon bg-red"><i class="icon-padnote"></i></div>
+                    <div class="title">
+                        <span>Madres<br>Cuidadora</span>
+                        <div class="progress">
+                            <div role="progressbar" style="width: 100%; height: 4px;" aria-valuenow="" aria-valuemin="0" aria-valuemax="100" class="progress-bar bg-red"></div>
+                        </div>
+                    </div>
+                    <div class="number"><strong>@ViewBag.cuidadoras</strong></div>
+                </div>
+            </div>
+            <!-- Item -->
+            <div class="col-xl-3 col-sm-6">
+                <div class="item d-flex align-items-center">
+                    <div class="icon bg-green"><i class="icon-bill"></i></div>
+                    <div class="title">
+                        <span>Madres<br>Familia</span>
+                        <div class="progress">
+                            <div role="progressbar" style="width: 100%; height: 4px;" aria-valuenow="100" aria-valuemin="0" aria-valuemax="100" class="progress-bar bg-green"></div>
+                        </div>
+                    </div>
+                    <div class="number"><strong>@ViewBag.familias</strong></div>
+                </div>
+            </div>
+            <!-- Item -->
+            <div class="col-xl-3 col-sm-6">
+                <div class="item d-flex align-items-center">
+                    <div class="icon bg-orange"><i class="icon-check"></i></div>
+                    <div class="title">
+                        <span>Madres<br>Guia</span>
+                        <div class="progress">
+                            <div role="progressbar" style="width: 100%; height: 4px;" aria-valuenow="100" aria-valuemin="0" aria-valuemax="100" class="progress-bar bg-orange"></div>
+                        </div>
+                    </div>
+                    <div class="number"><strong>@ViewBag.guias</strong></div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>

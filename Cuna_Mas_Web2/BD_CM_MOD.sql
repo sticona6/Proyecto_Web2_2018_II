@@ -76,7 +76,9 @@ create table Ranking(
   id  int PRIMARY KEY NOT NULL IDENTITY,
   puntuacion int not null,
   fk_id_madre int not null,
+  fk_id_padre int not null,
   foreign key (fk_id_madre) references Madre(id)
+  foreign key (fk_id_padre) references Padre(id)
 )
 
 CREATE TABLE Reunion
